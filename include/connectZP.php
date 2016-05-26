@@ -1,6 +1,6 @@
 <?php 
-$USER="lpweb";
-$DB="ZendProject_Db";
+$USER="";
+$DB="";
 $HOST="localhost";
-$PASSWORD="lpweb";
+$PASSWORD="";
 ?>
