@@ -16,14 +16,15 @@ class Application_Resource_User extends Zend_Db_Table_Abstract
     }
     
     // Cancella user
-    public function deleteUser($code) {
-    	$where = " code = '$code'";
+    public function deleteUser($user) {
+    	$where = " user = '$user'";
     	return $this->delete($where);
     }
     
     // Ripesca tutti gli utente con role user
     public function getUser(){
     	$select = $this->select()->where('role = ?', 'user')->order('name');
+    	return $this->fetchAll($select);
     }
     
     public function getUserByName($usrName)
