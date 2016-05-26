@@ -23,7 +23,7 @@ class Application_Resource_User extends Zend_Db_Table_Abstract
     
     // Ripesca tutti gli utente con role user
     public function getUser(){
-    	$select = $this->select()->where("role = 'user'")->order('name');
+    	$select = $this->select()->where('role = ?', 'user')->order('name');
     }
     
     public function getUserByName($usrName)

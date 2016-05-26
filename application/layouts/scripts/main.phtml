@@ -51,9 +51,11 @@
 					</p>
 				</div>
 				<div class="col-sm-4 text-right">
-					<p>
-						<a href="#">F.A.Q.</a>
-					</p>
+					<p><a href="<?= $this->url(array(
+									'controller' => 'public',
+									'action' => 'faq',
+									), 
+									'default', true);?>">F.A.Q.</a></p>
 				</div>
 			</footer>
 		</div>

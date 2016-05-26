@@ -6,8 +6,7 @@ class PublicController extends Zend_Controller_Action
 	protected $_authService;
 	protected $_formlogin, $_formreg, $_formcontact;
 	
-    public function init()
-    {
+    public function init(){
     	$this->_helper->layout->setLayout('main');
     	$this->_publicModel = new Application_Model_Public();
     	$this->_authService = new Application_Service_Auth();
@@ -16,9 +15,7 @@ class PublicController extends Zend_Controller_Action
     	$this->view->contactForm = $this->getContactForm();
     }
 
-    public function indexAction()
-    {
-        // action body
+    public function indexAction(){
     	
     }
     
@@ -95,9 +92,9 @@ class PublicController extends Zend_Controller_Action
     	));
     	return $this->_formreg;
     }
-    /* Fine Registrazione */
+    /**** Fine Registrazione ****/
     
-    /* Contatti */
+    /**** Contatti ****/
     
     public function contactAction(){
     	
@@ -118,7 +115,16 @@ class PublicController extends Zend_Controller_Action
     	return $this->_formcontact;
     }
     
-    /* Fine Contatti */
+    /**** Fine Contatti ****/
+    
+    /**** F.A.Q ****/
+    
+    public function faqAction(){
+    	$faq = $this->_publicModel->viewFaq();
+    	$this->view->assign(array('faq' => $faq));
+    }
+    
+    /**** Fine F.A.Q ****/
 
 }
 
