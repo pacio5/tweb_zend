@@ -1,0 +1,96 @@
+<?= $this->doctype(); ?>
+<html>
+<head>
+<?= $this->headMeta(); ?>
+<?= $this->headLink()->appendStylesheet($this->baseUrl('css/stile.css'));?>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<?= $this->headTitle('SOPS Escape'); ?>
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+	<!-- Fixed navbar -->
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse"
+				data-target=".navbar-collapse">
+				<span class="sr-only"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">SOPS ESCAPE</a>
+		</div>
+
+		<div class="collapse navbar-collapse">
+			<?= $this->render('_topnavmain.phtml') ?>
+		</div>
+	</nav>
+	<div class="img-principale hidden-xs">
+		<img src="<?= $this->baseUrl('css/images/blueprint.png'); ?>" class="img-responsive" alt="" title="" />
+	</div>
+	<div class="container">
+		<?php echo $this->layout()->content; ?>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			<footer>
+				<div class="col-sm-4">
+					<p>&copy; SOPS S.p.A | Ancona | P.IVA 00000000000</p>
+				</div>
+				<div class="col-sm-4 text-center">
+					<p>
+						<a href="mailto:sops@sops.com"><i class="fa fa-envelope"></i>
+							sops@sops.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
+							href="tel:+39 0000 000 000"><i class="fa fa-phone"></i> +39
+							0000 000 000 </a>
+					</p>
+				</div>
+				<div class="col-sm-4 text-right">
+					<p>
+						<a href="#">F.A.Q.</a>
+					</p>
+				</div>
+			</footer>
+		</div>
+	</div>
+	<div id="back_to_top">
+		<a href="#"><i class="fa fa-caret-square-o-up fa-4x"></i></a>
+	</div>
+	<!-- jQuery -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+
+			// Intercetto lo scroll di pagina
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 600) {
+					// Se l'evento scroll si verifica e supera i 400px, mostro l'icona
+					$("#back_to_top").show(1000);
+				}
+				// Se si verifica il ritorno sopra i 400px, nascondo l'icona 
+				if ($("body").scrollTop() < 400) {
+					$("#back_to_top").hide(1000);
+				}
+			});
+
+			// Al click sull'icona, torno ad inizio pagina con movenza fluida
+			$("#back_to_top").click(function() {
+				$("html,body").animate({
+					scrollTop : 0
+				}, 1500, function() {
+				});
+			});
+		});
+	</script>
+</body>
+</html>

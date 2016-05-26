@@ -1,0 +1,128 @@
+body {
+	padding-top: 50px;
+}
+
+
+@font-face {
+	font-family: "Squared display normal";
+	src: url(font-logo.ttf);
+}
+
+a.logo{
+	font-family: "Squared display normal";
+	font-weight: bold;
+	font-size: 2em;
+}
+
+.login-top {
+	margin-right: 30px;
+}
+
+.lang {
+	padding: 5px;
+}
+
+.img-principale {
+	margin-bottom: 80px;
+}
+
+footer {
+	border-top: 3px solid #337ab7;
+	margin-top: 50px;
+	padding: 20px;
+	color: #337ab7;
+}
+
+#back_to_top {
+	position: fixed;
+	bottom: 15px;
+	right: 15px;
+	cursor: pointer;
+	display: none;
+}
+
+.serv {
+	border-right: 1px solid #000;
+	border-left: 1px solid #000;
+}
+
+.service h4 {
+	color: #337ab7
+}
+
+.didascalia-azienda {
+	float: left;
+	margin: 15px;
+}
+
+.thumbnail-team {
+	text-align: center;
+	padding: 0 20px;
+	width: 200px;
+	margin: 0 auto
+}
+
+.thumbnail-team img {
+	margin-left: auto;
+	margin-right: auto
+}
+
+.container-small {
+	width: 250px;
+}
+
+.container-small #loginForm {
+	padding-left: 10%;
+	padding-right: 10%;
+}
+
+.container-small #loginForm input {
+	margin: 5px;
+}
+
+.container-small #loginForm button {
+	display: block;
+	margin: 0 auto;
+}
+
+.icone-principali i {
+	display: block;
+}
+
+/* Pagina Profilo */
+.img-user {
+	width: 180px;
+}
+
+.utente h5 {
+	color: #9a9a9a;
+}
+
+.dati-utente h5:last-child {
+	color: #9a9a9a;
+}
+
+@media ( min-width :768px) {
+	.dati-utente {
+		padding: 25px;
+	}
+	.utente {
+		margin-top: 10px;
+	}
+	.password {
+		padding-top: 35px;
+	}
+}
+
+@media ( max-width :768px) {
+	.img-user {
+		display: block;
+		margin: 0 auto;
+	}
+	.utente, .dati-utente {
+		text-align: center;
+	}
+	.dati-utente {
+		padding-top: 15px;
+	}
+}
