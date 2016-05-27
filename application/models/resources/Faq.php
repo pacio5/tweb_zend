@@ -25,7 +25,7 @@ class Application_Resource_Faq extends Zend_Db_Table_Abstract {
 	
 	// Recupera una F.A.Q tramite il codice
 	public function getFaqByCode($code){
-		$select = $this->select ()->where('code = ?', $code)->order ( 'code' );
+		$select = $this->select ()->where('code = ?', $code);
 		return $this->fetchRow($select)->toArray();
 	}
 	
