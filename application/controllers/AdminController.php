@@ -4,31 +4,22 @@ class AdminController extends Zend_Controller_Action
 {
 	protected $_adminModel;
 	protected $_authService;
-	protected $_formBuilding, $_formStaff, $_formUser, $_formFaq, $_formFaqModify;
+	protected $_form;
 	
 
-    public function init()
-    {
+    public function init(){
     	$this->_helper->layout->setLayout('admin');
     	$this->_adminModel = new Application_Model_Admin();
-    	$this->view->buildingForm = $this->getBuildingForm();
-    	$this->view->newstaffForm = $this->getStaffForm();
-    	$this->view->newuserForm = $this->getUserForm();
-    	$this->view->newfaqForm = $this->getFaqForm();
-    	$this->view->modifyfaqForm = $this->modifyFaqForm();
-    	
     	$this->_authService = new Application_Service_Auth();
   
     }
 
-    public function indexAction()
-    {
+    public function indexAction(){
     	
     }
     
     // Action per effettuare il logout
-    public function logoutAction()
-    {
+    public function logoutAction(){
     	$this->_authService->clear();
     	return $this->_helper->redirector('index','public');
     }
@@ -37,16 +28,17 @@ class AdminController extends Zend_Controller_Action
     
     // Action per visualizzare la form di inserimento di un edificio
     public function newbuildingAction(){
-    	
+    	$this->view->buildingForm = $this->getBuildingForm();
     }
     
     // Action per validare e caricare l'edificio
     public function addbuildingAction(){
+    	$this->view->buildingForm = $this->getBuildingForm();
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
     	}
     	
-    	$form = $this->_formBuilding;
+    	$form = $this->_form;
     	
     	if(!$form->isValid($_POST)){
     		$form->setDescription('Attenzione: dati inseriti errati');
@@ -55,19 +47,26 @@ class AdminController extends Zend_Controller_Action
     	
     	$values = $form->getValues();
     	$this->_adminModel->newBuilding($values);
-    	$this->_helper->redirector('index');
+    	$this->_helper->redirector('viewbuilding');
+    }
+    
+    public function modifybuildingAction(){
+    	$code = $this->_getParam('code');
+    	$building = $this->_adminModel->getBuildingByCode($code);
+    	$form = $this->_form;
+    	$form->populate($building);
     }
     
     // Genera il form per gli edifici
     private function getBuildingForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_formBuilding = new Application_Form_Admin_Building_Add();
-    	$this->_formBuilding->setAction($urlHelper->url(array(
+    	$this->_form = new Application_Form_Admin_Building_Add();
+    	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'addbuilding'),
     			'default'
     			));
-    	return $this->_formBuilding;
+    	return $this->_form;
     }
     
     /* Visualizza Edifici */
@@ -93,16 +92,17 @@ class AdminController extends Zend_Controller_Action
     /**** Staff ****/
     // Action per visualizzare la form di inserimento dello staff
     public function newstaffAction(){
-    	 
+    	$this->view->newstaffForm = $this->getStaffForm();
     }
     
     // Action per validare e caricare lo staff
     public function addstaffAction(){
+    	$this->view->newstaffForm = $this->getStaffForm();
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
     	}
     	 
-    	$form = $this->_formStaff;
+    	$form = $this->_form;
     	 
     	if(!$form->isValid($_POST)){
     		$form->setDescription('Attenzione: dati inseriti errati');
@@ -129,13 +129,13 @@ class AdminController extends Zend_Controller_Action
     
     private function getStaffForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_formStaff = new Application_Form_Admin_Staff_Add();
-    	$this->_formStaff->setAction($urlHelper->url(array(
+    	$this->_form = new Application_Form_Admin_Staff_Add();
+    	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'addstaff'),
     			'default'
     			));
-    	return $this->_formStaff;
+    	return $this->_form;
     }
     
     /**** Fine Staff ****/
@@ -143,15 +143,16 @@ class AdminController extends Zend_Controller_Action
     /**** Utente registrato ****/
    
     public function newuserAction(){
-    	
+    	$this->view->newuserForm = $this->getUserForm();
     }
     
     public function adduserAction(){
+    	$this->view->newuserForm = $this->getUserForm();
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
     	}
     	
-    	$form = $this->_formUser;
+    	$form = $this->_form;
     	
     	if(!$form->isValid($_POST)){
     		$form->setDescription('Attenzione: dati inseriti errati');
@@ -178,13 +179,13 @@ class AdminController extends Zend_Controller_Action
     
     private function getUserForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_formUser = new Application_Form_Admin_User_Add();
-    	$this->_formUser->setAction($urlHelper->url(array(
+    	$this->_form = new Application_Form_Admin_User_Add();
+    	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'adduser'),
     			'default'
     	));
-    	return $this->_formUser;
+    	return $this->_form;
     }
     
     /**** Fine Utente Registrato ****/
@@ -192,16 +193,17 @@ class AdminController extends Zend_Controller_Action
     /**** Faq ****/
     // Visualizza la form di inserimento di una faq
     public function newfaqAction(){
-    	
+    	$this->view->newfaqForm = $this->getFaqForm();
     }
     
     // Action per caricare una faq
     public function addfaqAction(){
+    	$this->view->newfaqForm = $this->getFaqForm();
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
     	}
     	 
-    	$form = $this->_formFaq;
+    	$form = $this->_form;
     	 
     	if(!$form->isValid($_POST)){
     		$form->setDescription('Attenzione: dati inseriti errati');
@@ -228,29 +230,31 @@ class AdminController extends Zend_Controller_Action
     
     private function getFaqForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_formFaq = new Application_Form_Admin_Faq_Add();
-    	$this->_formFaq->setAction($urlHelper->url(array(
+    	$this->_form = new Application_Form_Admin_Faq_Add();
+    	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'addfaq'),
     			'default'
     			));
-    	return $this->_formFaq;
+    	return $this->_form;
     }
     
     public function modifyfaqAction(){
+    	$this->view->modifyfaqForm = $this->modifyFaqForm();
     	$code = $this->_getParam('code');
     	$faq = $this->_adminModel->getFaqByCode($code);
-    	$form = $this->_formFaqModify;
+    	$form = $this->_form;
     	$form->populate($faq);
     }
     
     public function updatefaqAction(){
+    	$this->view->modifyfaqForm = $this->modifyFaqForm();
     	$code = $this->_getParam('code');
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
     	}
     	
-    	$form = $this->_formFaqModify;
+    	$form = $this->_form;
     	
     	if(!$form->isValid($_POST)){
     		$form->setDescription('Attenzione: dati inseriti errati');
@@ -265,14 +269,14 @@ class AdminController extends Zend_Controller_Action
 
     private function modifyFaqForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_formFaqModify = new Application_Form_Admin_Faq_Add();
-    	$this->_formFaqModify-> setName('updateFaq');
-    	$this->_formFaqModify->setAction($urlHelper->url(array(
+    	$this->_form = new Application_Form_Admin_Faq_Add();
+    	$this->_form-> setName('updateFaq');
+    	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'updatefaq'),
     			'default'
     			));
-    	return $this->_formFaqModify;
+    	return $this->_form;
     }
     
     /**** End Faq ****/
