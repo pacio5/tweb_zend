@@ -28,7 +28,12 @@
 													'code' => $building->code
 													), 
 													'default', true); ?>"><i class="fa fa-times"></i></a></td>
-								<td><a href=""><i class="fa fa-pencil-square-o"></i></a></td>
+								<td><a href="<?=$this->url(array(
+													'controller' => 'admin',
+													'action' => 'modifybuilding',
+													'code' => $building->code
+													), 
+													'default', true); ?>"><i class="fa fa-pencil-square-o"></i></a></td>
 								<td><?= $building->name;?></td>
 								<td><?= $building->address;?></td>
 								<td><?= $building->floor_number;?></td>

@@ -51,10 +51,30 @@ class AdminController extends Zend_Controller_Action
     }
     
     public function modifybuildingAction(){
+    	$this->view->modifybuildingForm = $this->modifyBuildingForm();
     	$code = $this->_getParam('code');
     	$building = $this->_adminModel->getBuildingByCode($code);
     	$form = $this->_form;
     	$form->populate($building);
+    } 
+    
+    public function updatebuildingAction(){
+    	$this->view->modifybuildingForm = $this->modifyBuildingForm();
+    	$code = $this->_getParam('code');
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	
+    	$form = $this->_form;
+    	
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('modifybulding');
+    	}
+    	
+    	$values = $form->getValues();
+    	$this->_adminModel->updateBuilding($values, $code);
+    	$this->_helper->redirector('viewbuilding');
     }
     
     // Genera il form per gli edifici
@@ -84,6 +104,18 @@ class AdminController extends Zend_Controller_Action
     	$code = $this->_getParam('code');
     	$result = $this->_adminModel->deleteBuilding($code);
     	$this->_helper->redirector('viewbuilding');
+    }
+    
+    private function modifyBuildingForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_Building_Add();
+    	$this->_form-> setName('updateBuilding');
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'updatebuilding'),
+    			'default'
+    			));
+    	return $this->_form;
     }
     
     /**** End Building ****/

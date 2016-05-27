@@ -16,14 +16,18 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Building')->deleteBuilding($info);
 	}
 	
-	public function modifyBuilding($info)
-	{
-		return $this->getResource('Building')->modifyBuilding($info);
-	}
-	
 	public function viewBuilding()
 	{
 		return $this->getResource('Building')->getBuilding();
+	}
+	
+	public function updateBuilding($info, $code)
+	{
+		return $this->getResource('Building')->updateBuilding($info, $code);
+	}
+	
+	public function getBuildingByCode($info){
+		return $this->getResource('Building')->getBuildingByCode($info);
 	}
 	
 	/**** Fine Edifici ****/
@@ -38,7 +42,7 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Staff')->deleteStaff($info);
 	}
 	
-	public function modifyStaff($info) {
+	public function updateStaff($info) {
 		return $this->getResource('Staff')->modifyStaff($info);
 	}
 	
@@ -62,8 +66,8 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('User')->deleteUser($info);
 	}
 	
-	public function modifyUser($info){
-		return $this->getResource('User')->modifyUser($info);
+	public function updateUser($info){
+		return $this->getResource('User')->updateUser($info);
 	}
 	
 	/**** Fine Utente Registrato ****/

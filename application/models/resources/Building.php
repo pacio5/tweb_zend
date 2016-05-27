@@ -12,14 +12,20 @@ class Application_Resource_Building extends Zend_Db_Table_Abstract {
 		return $this->fetchAll ( $select );
 	}
 	
+	public function getBuildingByCode($info) {
+		$select = $this->select ()->where('code = ?', $info);
+		return $this->fetchRow( $select )->toArray();
+	}
+	
 	// Cancella edificio dal db
 	public function deleteBuilding($code) {
 		$where = "code = $code";
 		return $this->delete($where);
 	}
-	// Aggiorna dati edificio DA RIVEDERE
-	public function modifyBuilding($code, $address, $name, $floor_number) {
-		$this->update ( $code, $address, $name, $floor_number );
+	// Aggiorna dati edificio
+	public function updateBuilding($info, $code){
+		$where = "code = $code";
+		$this->update($info, $where);
 	}
 	
 	// inserisce un nuovo edificio
