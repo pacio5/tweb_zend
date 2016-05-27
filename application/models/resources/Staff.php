@@ -18,11 +18,6 @@ class Application_Resource_Staff extends Zend_Db_Table_Abstract {
 		return $this->delete($where);
 	}
 	
-	// Aggiorna dati staff DA RIVEDERE
-	public function modifyStaff($code, $user, $name, $surname, $password, $role) {
-		$this->update ( $code, $user, $name, $surname, $password, $role );
-	}
-	
 	// inserisce un nuovo staff
 	public function insertStaff($info) {
 		$this->insert ( $info );

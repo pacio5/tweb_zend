@@ -179,7 +179,7 @@ class AdminController extends Zend_Controller_Action
     }
     
     public function updatestaffAction(){
-    	$this->view->modifybuildingForm = $this->modifyStaffForm();
+    	$this->view->modifystaffForm = $this->modifyStaffForm();
     	$code = $this->_getParam('user');
     	if(!$this->getRequest()->isPost()){
     		$this->_helper->redirector('index');
@@ -256,6 +256,45 @@ class AdminController extends Zend_Controller_Action
     			'default'
     	));
     	return $this->_form;
+    }
+    
+    private function modifyUserForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_User_Add();
+    	$this->_form-> setName('updateUser');
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'updateuser'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
+    
+    public function modifyuserAction(){
+    	$this->view->modifyuserForm = $this->modifyUserForm();
+    	$code = $this->_getParam('user');
+    	$user = $this->_adminModel->getUserByUser($code);
+    	$form = $this->_form;
+    	$form->populate($user);
+    }
+    
+    public function updateuserAction(){
+    	$this->view->modifyuserForm = $this->modifyUserForm();
+    	$code = $this->_getParam('user');
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    
+    	$form = $this->_form;
+    
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('modifyuser');
+    	}
+    
+    	$values = $form->getValues();
+    	$this->_adminModel->updateUser($values, $code);
+    	$this->_helper->redirector('viewuser');
     }
     
     /**** Fine Utente Registrato ****/

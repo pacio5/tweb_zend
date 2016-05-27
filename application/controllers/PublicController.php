@@ -104,7 +104,6 @@ class PublicController extends Zend_Controller_Action
     }
     
     private function getContactForm(){
-    	$this->view->contactForm = $this->getContactForm();
     	$urlHelper = $this->_helper->getHelper('url');
     	$this->_form = new Application_Form_Public_Contact_Send();
     	$this->_form->setAction($urlHelper->url(array(

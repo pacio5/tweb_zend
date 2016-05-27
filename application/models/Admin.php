@@ -70,8 +70,12 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('User')->deleteUser($info);
 	}
 	
-	public function updateUser($info){
-		return $this->getResource('User')->updateUser($info);
+	public function updateUser($info, $code){
+		return $this->getResource('User')->updateUser($info, $code);
+	}
+	
+	public function getUserByUser($info){
+		return $this->getResource('User')->getUserByUser($info);
 	}
 	
 	/**** Fine Utente Registrato ****/

@@ -27,7 +27,12 @@
 													'user' => $user->user
 													), 
 													'default', true); ?>"><i class="fa fa-times"></i></a></td>
-								<td><a href=""><i class="fa fa-pencil-square-o"></i></a></td>
+								<td><a href="<?= $this->url(array(
+													'controller' => 'admin',
+													'action' => 'modifyuser',
+													'user' => $user->user
+													), 
+													'default', true); ?>"><i class="fa fa-pencil-square-o"></i></a></td>
 								<td><?= $user->user;?></td>
 								<td><?= $user->name;?></td>
 								<td><?= $user->surname;?></td>
