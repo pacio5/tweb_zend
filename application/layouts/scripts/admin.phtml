@@ -24,7 +24,11 @@
 					<span class="sr-only"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html">Expenses Manage</a>
+				<a class="navbar-brand" href="<?= $this->url(array(
+												'controller' => 'admin',
+												'action' => 'index',
+												), 
+												'default', true); ?>">Expenses Manage</a>
 			</div>
 			<!-- Top Menu Items -->
 			<?= $this->render("_topnavadmin.phtml"); ?>

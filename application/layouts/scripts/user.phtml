@@ -23,7 +23,11 @@
 				<span class="sr-only"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">SOPS ESCAPE</a>
+			<a class="navbar-brand" href="<?= $this->url(array(
+											'controller' => 'user',
+											'action' => 'index',
+											), 
+											'default', true); ?>">SOPS ESCAPE</a>
 		</div>
 
 		<div class="collapse navbar-collapse">

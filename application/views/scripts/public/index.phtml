@@ -25,7 +25,11 @@
 		</article>
 	</div>
 	<div class="col-sm-12 text-center" style="padding: 30px;">
-		<a class="btn btn-lg btn-success" href="#">Registrati</a>
+		<a class="btn btn-lg btn-success" href="<?= $this->url(array(
+				'controller' => 'public',
+				'action' => 'registration'
+				),
+				'default', true); ?>">Registrati</a>
 
 	</div>
 </div>
