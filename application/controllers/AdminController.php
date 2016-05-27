@@ -170,6 +170,44 @@ class AdminController extends Zend_Controller_Action
     	return $this->_form;
     }
     
+    public function modifystaffAction(){
+    	$this->view->modifystaffForm = $this->modifyStaffForm();
+    	$code = $this->_getParam('user');
+    	$user = $this->_adminModel->getStaffByUser($code);
+    	$form = $this->_form;
+    	$form->populate($user);
+    }
+    
+    public function updatestaffAction(){
+    	$this->view->modifybuildingForm = $this->modifyStaffForm();
+    	$code = $this->_getParam('user');
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	 
+    	$form = $this->_form;
+    	 
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('modifystaff');
+    	}
+    	 
+    	$values = $form->getValues();
+    	$this->_adminModel->updateStaff($values, $code);
+    	$this->_helper->redirector('viewstaff');
+    }
+    
+    private function modifyStaffForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_Staff_Add();
+    	$this->_form-> setName('updateStaff');
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'updatestaff'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
     /**** Fine Staff ****/
     
     /**** Utente registrato ****/

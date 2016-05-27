@@ -42,12 +42,16 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Staff')->deleteStaff($info);
 	}
 	
-	public function updateStaff($info) {
-		return $this->getResource('Staff')->modifyStaff($info);
-	}
-	
 	public function newStaff($info) {
 		return $this->getResource('Staff')->insertStaff($info);
+	}
+	
+	public function getStaffByUser($info){
+		return $this->getResource('Staff')->getStaffByUser($info);
+	}
+	
+	public function updateStaff($info, $code){
+		return $this->getResource('Staff')->updateStaff($info, $code);
 	}
 	
 	/**** Fine Staff ****/
