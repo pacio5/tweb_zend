@@ -4,7 +4,7 @@ class AdminController extends Zend_Controller_Action
 {
 	protected $_adminModel;
 	protected $_authService;
-	protected $_formBuilding, $_formStaff, $_formUser, $_formfaq;
+	protected $_formBuilding, $_formStaff, $_formUser, $_formFaq, $_formFaqModify;
 	
 
     public function init()
@@ -15,6 +15,7 @@ class AdminController extends Zend_Controller_Action
     	$this->view->newstaffForm = $this->getStaffForm();
     	$this->view->newuserForm = $this->getUserForm();
     	$this->view->newfaqForm = $this->getFaqForm();
+    	$this->view->modifyfaqForm = $this->modifyFaqForm();
     	
     	$this->_authService = new Application_Service_Auth();
   
@@ -209,7 +210,7 @@ class AdminController extends Zend_Controller_Action
     	 
     	$values = $form->getValues();
     	$this->_adminModel->newFaq($values);
-    	$this->_helper->redirector('index');
+    	$this->_helper->redirector('viewfaq');
     	
     }
     
@@ -234,6 +235,44 @@ class AdminController extends Zend_Controller_Action
     			'default'
     			));
     	return $this->_formFaq;
+    }
+    
+    public function modifyfaqAction(){
+    	$code = $this->_getParam('code');
+    	$faq = $this->_adminModel->getFaqByCode($code);
+    	$form = $this->_formFaqModify;
+    	$form->populate($faq);
+    }
+    
+    public function updatefaqAction(){
+    	$code = $this->_getParam('code');
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	
+    	$form = $this->_formFaqModify;
+    	
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('modifyfaq');
+    	}
+    	
+    	$values = $form->getValues();
+    	$this->_adminModel->updateFaq($values, $code);
+    	$this->_helper->redirector('viewfaq');
+    }
+    
+
+    private function modifyFaqForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_formFaqModify = new Application_Form_Admin_Faq_Add();
+    	$this->_formFaqModify-> setName('updateFaq');
+    	$this->_formFaqModify->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'updatefaq'),
+    			'default'
+    			));
+    	return $this->_formFaqModify;
     }
     
     /**** End Faq ****/

@@ -83,8 +83,12 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Faq')->deleteFaq($info);
 	}
 	
-	public function modifyFaq($info){
-		return $this->getResource('Faq')->modifyFaq($info);
+	public function getFaqByCode($code){
+		return $this->getResource('Faq')->getFaqByCode($code);
+	}
+	
+	public function updateFaq($info, $code){
+		return $this->getResource('Faq')->updateFaq($info, $code);
 	}
 	
 	/**** Fine F.A.Q ****/

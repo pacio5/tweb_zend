@@ -26,7 +26,12 @@
 													'code' => $faq->code
 													), 
 													'default', true); ?>"><i class="fa fa-times"></i></a></td>
-								<td><a href=""><i class="fa fa-pencil-square-o"></i></a></td>
+								<td><a href="<?=$this->url(array(
+													'controller' => 'admin',
+													'action' => 'modifyfaq',
+													'code' => $faq->code
+													), 
+													'default', true); ?>"><i class="fa fa-pencil-square-o"></i></a></td>
 								<td><?= $faq->question;?></td>
 								<td><?= $faq->answer;?></td>
 							</tr>
