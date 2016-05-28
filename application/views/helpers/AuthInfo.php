@@ -10,10 +10,10 @@ class Zend_View_Helper_AuthInfo extends Zend_View_Helper_Abstract
             $this->_authService = new Application_Service_Auth();
         }
         if (null === $info) {
-            return;
+            return $this;
         }
         if (false === $this->isLoggedIn()) {
-            return;
+            return null;
         }
         return $this->_authService->getIdentity()->$info;
     }
