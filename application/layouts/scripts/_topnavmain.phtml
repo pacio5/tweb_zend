@@ -1,12 +1,12 @@
-<? $log = Zend_Auth::getInstance()->hasIdentity(); ?>
+<?php $log = Zend_Auth::getInstance()->hasIdentity(); ?>
 
 <ul class="nav navbar-nav">
 	<li><a href="
 	<?php if (!$log): ?>
 	<?=$this->url ( array ('controller' => 'public','action' => 'index' ), 'default', true );?>
-	<? else :?>
+	<?php else :?>
 	<?=$this->url ( array ('controller' => 'user','action' => 'index' ), 'default', true );?>
-	<? endif; ?>
+	<?php endif; ?>
 	">Home</a></li>
 	<li><a
 		href="<?=$this->url ( array ('controller' => 'public','action' => 'viewstatic','staticPage' => 'chisiamo' ), 'default', true );?>">Chi Siamo</a></li>
@@ -20,7 +20,7 @@
 	<?php if (!$log): ?>
 		<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'login' ), 'default', true );?>">Login</a></li>
 		<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'registration' ), 'default', true );?>">Registrati</a></li>
-	<? else :?> 
+	<?php else :?> 
 		<li><a href="<?=$this->url ( array ('controller' => 'user','action' => 'logout' ), 'default', true );?>">Logout</a></li>
 		<li><a href="<?=$this->url ( array ('controller' => 'user','action' => 'viewprofile' ), 'default', true );?>">Profilo</a></li>
 	<?php endif; ?>
