@@ -8,7 +8,7 @@ class Application_Form_Admin_Staff_Add extends App_Form_Abstract {
 
 		$this->addElement ( 'text', 'user', array (
 				'label' => 'Username',
-				'filters' => array ('StringTrim'),
+				'filters' => array ('StringTrim', 'StringToLower'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 1, 30 ) ) ),
 				'decorators' => $this->elementDecorators,
