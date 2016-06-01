@@ -56,6 +56,7 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function getFloorByCode($info){
 		return $this->getResource('Floor')->getFloorByCode($info);
+	}
 
 	/**** Fine Piani ****/
 	
@@ -83,6 +84,7 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function getZoneByCode($info){
 		return $this->getResource('Zone')->getZoneByCode($info);
+	}
 
 	/**** Fine Zone ****/
 	
@@ -110,6 +112,7 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function getEscapeByCode($info){
 		return $this->getResource('Escape')->getEscapeByCode($info);
+	}
 
 	/**** Fine Vie di Fuga ****/
 
