@@ -34,6 +34,27 @@
 					'action' => 'viewbuilding'),
 					'default', true); ?>">Modifica / Cancella</a></li>
 			</ul></li>
+		<li><a href="javascript:;" data-toggle="collapse" data-target="#floor"><i
+				class="fa fa-fw fa-home"></i> Gestione Planimetrie <i
+				class="fa fa-fw fa-caret-down"></i></a>
+			<ul id="floor" class="collapse">
+				<li><a href="<?= $this->url(array(
+					'controller' => 'admin',
+					'action' => 'newfloor'),
+					'default', true); ?>">Inserisci Piano</a></li>
+				<li><a href=" <?= $this->url(array(
+					'controller' => 'admin',
+					'action' => 'viewfloor'),
+					'default', true); ?>">Modifica / Cancella Piano</a></li>
+				<li><a href=" <?= $this->url(array(
+				    'controller'=> 'admin',
+				    'action' => 'newescape'),
+				    'default', true); ?>">Inserisci Uscita</a></li>
+				<li><a href=" <?= $this->url(array(
+				    'controller'=> 'admin',
+				    'action' => 'viewescape'),
+				    'default', true); ?>">Modifica / Cancella Uscita</a></li>
+			</ul></li>
 		<li><a href="javascript:;" data-toggle="collapse" data-target="#staff"><i
 				class="fa fa-fw fa-users"></i> Gestione Staff <i
 				class="fa fa-fw fa-caret-down"></i></a>
