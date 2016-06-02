@@ -12,4 +12,16 @@ class UserController extends Zend_Controller_Action {
 		$this->_authService->clear ();
 		return $this->_helper->redirector ( 'index', 'public' );
 	}
+	
+	public function escapeAction(){
+		
+	}
+	
+	public function registerpositionAction(){
+		
+	}
+	
+	public function alertAction(){
+		
+	}
 }

@@ -1,21 +1,30 @@
 <div class="row icone-principali">
 	<div class="col-sm-4">
 		<div class="text-center">
-			<a href="#"> <i class="fa fa-map-marker fa-5x"></i><br /> <span
-				class="h3">Registra La Tua Posizione</span></a>
+			<a href="<?= $this->url(array(
+					'controller' => 'user',
+					'action' => 'registerposition'),
+					'default', true); ?>"> <i class="fa fa-map-marker fa-5x"></i><br /> 
+			<span class="h3">Registra La Tua Posizione</span></a>
 			<p>Testo di prova testo di prova</p>
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="text-center">
-			<a href="#"> <i class="fa fa-exclamation-triangle fa-5x"></i><br /> <span
+			<a href="<?= $this->url(array(
+					'controller' => 'user',
+					'action' => 'alert'),
+					'default', true); ?>"> <i class="fa fa-exclamation-triangle fa-5x"></i><br /> <span
 				class="h3">Segnala Pericolo</span></a>
 			<p>Testo di prova testo di prova</p>
 		</div>
 	</div>
 	<div class="col-sm-4">
 		<div class="text-center">
-			<a href="#"> <i class="fa fa-info fa-5x"></i><br /> <span class="h3">Uscita
+			<a href="<?= $this->url(array(
+					'controller' => 'user',
+					'action' => 'escape'),
+					'default', true); ?>"> <i class="fa fa-info fa-5x"></i><br /> <span class="h3">Uscita
 					D'Emergenza</span></a>
 			<p>Testo di prova testo di prova</p>
 		</div>
