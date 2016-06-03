@@ -26,6 +26,7 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 		$this->addElement ( 'text', 'floor_number', array (
 				'label' => 'Numero Piani',
 				'required' => true ,
+				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		$this->addElement ( 'file', 'image', array (
