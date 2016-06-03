@@ -6,12 +6,11 @@
 					<img src="" class="img-user img-circle img-thumbnail img-responsive">
 				</div>
 				<div class="col-sm-3 utente">
-					<h3>Elia</h3>
-					<h5>eliapacioni@gmail.com</h5>
+					<h3><?= $this->authInfo('name');?> <?= $this->authInfo('surname');?></h3>
+					<h5><?= $this->authInfo('user');?></h5>
 				</div>
 				<div class="col-sm-3 dati-utente">
-					<h5>Lingua</h5>
-					<h5>Italiano</h5>
+					<h5><?= $this->authInfo('role');?></h5>
 				</div>
 				<div class="col-sm-3 password">
 					<a href="#" class="h4"><small>Reimposta Password</small></a>

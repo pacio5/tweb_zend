@@ -174,7 +174,7 @@ class AdminController extends Zend_Controller_Action
     	$this->_helper->redirector('viewfloor');
     }
     
-    // Genera il form per gli edifici
+    // Genera il form per i piani
     private function getFloorForm(){
     	$urlHelper = $this->_helper->getHelper('url');
     	$this->_form = new Application_Form_Admin_Floor_Add();
@@ -186,7 +186,7 @@ class AdminController extends Zend_Controller_Action
     	return $this->_form;
     }
     
-    /* Visualizza Edifici */
+    /* Visualizza Piani */
     public function viewfloorAction(){
     	
     	// Recupera gli edifici dal database
@@ -507,8 +507,6 @@ class AdminController extends Zend_Controller_Action
     /**** Profile ****/
     
     public function viewprofileAction(){
-    	
-    	$profile = $this->_adminModel->getUserByName($info);
     }
     
     
