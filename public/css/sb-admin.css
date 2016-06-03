@@ -5,9 +5,17 @@
  */
 
 /* Global Styles */
-*{
-	font-family:"Century Gothic";
+@font-face {
+	font-family: "Squared display normal";
+	src: url(font-logo.ttf);
 }
+
+a.logo{
+	font-family: "Squared display normal";
+	font-weight: bold;
+	font-size: 2em;
+}
+
 body {
     margin-top: 120px;
    /* background-color: #222;*/

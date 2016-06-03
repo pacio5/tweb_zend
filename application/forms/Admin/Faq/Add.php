@@ -5,6 +5,7 @@ class Application_Form_Admin_Faq_Add extends App_Form_Abstract {
 		$this->setName ( 'addfaq' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
+		$this->setAttrib ( 'id', 'addfaq' );
 		
 		$this->addElement ( 'text', 'question', array (
 				'label' => 'Domanda',

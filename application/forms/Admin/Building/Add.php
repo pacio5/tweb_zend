@@ -5,6 +5,7 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 		$this->setName ( 'addbuilding' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
+		$this->setAttrib('id', 'building_add');
 		
 		$this->addElement ( 'text', 'name', array (
 				'label' => 'Nome',
@@ -28,16 +29,6 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 				'required' => true ,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
-		) );
-		$this->addElement ( 'file', 'image', array (
-				'label' => 'Immagine',
-				'destination' => APPLICATION_PATH . '/../public/images/building',
-				'validators' => array (
-						array ( 'Count', false, 1 ),
-						array ( 'Size', false, 1024000 ),
-						array ( 'Extension', false, array ( 'jpg', 'gif', 'png' ) 
-						) 
-				) , 'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'text', 'desc_short', array (

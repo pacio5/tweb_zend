@@ -39,7 +39,6 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		// CSS Font Awesome
 		$this->_view->headLink()->appendStylesheet("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
 		
-		
 	}
 	
 	protected function _initDefaultModuleAutoloader()
