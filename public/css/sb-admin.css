@@ -220,7 +220,7 @@ ul.alert-dropdown {
 	margin:0 auto;
 }
 
-.utente h5{
+.utente .h5{
 	color:#9a9a9a;
 }
 
@@ -235,7 +235,7 @@ ul.alert-dropdown {
 }
 
 .dati-utente{
-	padding:25px;
+	padding:10px;
 }
 
 .utente{
