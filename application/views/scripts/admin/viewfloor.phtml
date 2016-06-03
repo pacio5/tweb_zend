@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col-sm-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<i class="fa fa-money fa-fw"></i> Gestione Planimetrie
+				</h3>
+			</div>
+			<div class="panel-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-hover table-striped">
+						<thead>
+							<tr>
+								<th><i class="fa fa-trash-o"></i></th>
+								<th><i class="fa fa-file-o"></i></th>
+								<th>Edificio</th>
+								<th>Numero</th>
+								<th>Numero Zone</th>
+								<th>Immagine</th>
+							</tr>
+						</thead>
+						<tbody>
+						<?php foreach ($this->building as $building){
+							foreach ($this->floor as $floor){?>
+							<tr>
+								<td><a href="<?=$this->url(array(
+													'controller' => 'admin',
+													'action' => 'deletefloor',
+													'code' => $floor->code
+													), 
+													'default', true); ?>"><i class="fa fa-times"></i></a></td>
+								<td><a href="<?=$this->url(array(
+													'controller' => 'admin',
+													'action' => 'modifyfloor',
+													'code' => $floor->code
+													), 
+													'default', true); ?>"><i class="fa fa-pencil-square-o"></i></a></td>
+								<td><?= $building->name;?></td>
+								<td><?= $floor->number;?></td>
+								<td><?= $floor->zone_number;?></td>
+								<td><?= $floor->image;?></td>
+							</tr>
+						<?php }; }; ?>
+						</tbody>
+					</table>
+				</div>
+				<!--paginator-->
+				<div class="text-center">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
