@@ -8,12 +8,12 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 	
 	// Estrae tutti i piani gestiti, eventualmente paginati ed ordinati
 	public function getFloor() {
-		$select = $this->select ()->order ( 'code' );
+		$select = $this->select ()->order ( 'building_code' );
 		return $this->fetchAll ( $select );
 	}
 	
 	public function getFloorByCode($info) {
-		$select = $this->select ()->where('code = ?', $info);
+		$select = $this->select ()->where('building_code = ?', $info);
 		return $this->fetchRow( $select )->toArray();
 	}
 	
