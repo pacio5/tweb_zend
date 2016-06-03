@@ -1,36 +1,12 @@
 <div class="row">
-	<div class="col-sm-12 text-center">
-		<h1>Inserisci Una Segnalazione</h1>
+	<div class="col-sm-12">
+		<h1 class="text-center">Segnala Pericolo</h1>
 		<hr />
 	</div>
 	<div class="col-sm-4">
-		<form>
-			<label> Edificio </label> 
-			<select>
-				<option>Nome Edificio</option>
-				<option>Nome edificio</option>
-			</select><br /><br /> 
-			<label> Piano </label>
-			 <select>
-				<option>1</option>
-				<option>2</option>
-			</select><br /> <br /> 
-			<label>Zona</label> 
-			<select>
-				<option>1</option>
-				<option>2</option>
-			</select><br /> <br /> 
-			<label>Tipo Pericolo</label> 
-			<select>
-				<option>1</option>
-				<option>2</option>
-			</select><br /> <br /> 
-			
-			<input type="submit" value="Registra" />
-		</form>
+		<?=$this->alertForm; ?>
 	</div>
 	<div class="col-sm-8">
 		<img src="images/planimetria.jpg" class="img-responsive" />
 	</div>
-
 </div>
