@@ -29,16 +29,6 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
-		$this->addElement ( 'file', 'image', array (
-				'label' => 'Immagine',
-				'destination' => APPLICATION_PATH . '/../public/images/building',
-				'validators' => array (
-						array ( 'Count', false, 1 ),
-						array ( 'Size', false, 1024000 ),
-						array ( 'Extension', false, array ( 'jpg', 'gif', 'png' ) 
-						) 
-				) , 'decorators' => $this->elementDecorators,
-		) );
 		
 		$this->addElement ( 'text', 'desc_short', array (
 				'label' => 'Descrizione Breve',
