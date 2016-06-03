@@ -25,6 +25,10 @@
 </ul>
 <div class="login-top">
 	<ul class="nav navbar-nav navbar-right">
+	<?php $role = $this->authInfo('role'); ?>
+	<?php if ($role == 'admin'): ?>
+		<li><a href="<?=$this->url ( array ('controller' => 'admin','action' => 'index' ), 'default', true );?>">Amministrazione</a></li>
+	<?php endif; ?>
 	<?php if (!$log): ?>
 		<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'login' ), 'default', true );?>">Login</a></li>
 		<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'registration' ), 'default', true );?>">Registrati</a></li>
