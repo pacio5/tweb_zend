@@ -12,8 +12,8 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 		
 		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
 		$building = array();
-		$this->_adminModel = new Application_Resource_Building();
-        $build = $this->_adminModel->getBuilding();
+		$this->_adminModel = new Application_Model_Admin();
+        $build = $this->_adminModel->viewBuilding();
         foreach ($build as $bui) {
         	$building[$bui -> code] = $bui->name;       
         }
