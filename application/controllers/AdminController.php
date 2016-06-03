@@ -387,7 +387,7 @@ class AdminController extends Zend_Controller_Action
     public function modifyuserAction(){
     	$this->view->modifyuserForm = $this->modifyUserForm();
     	$code = $this->_getParam('user');
-    	$user = $this->_adminModel->getUserByUser($code);
+    	$user = $this->_adminModel->getUserByName($code);
     	$form = $this->_form;
     	$form->populate($user);
     }
@@ -507,6 +507,27 @@ class AdminController extends Zend_Controller_Action
     /**** Profile ****/
     
     public function viewprofileAction(){
+    }
+    
+    public function modifyprofileAction(){
+    	$this->view->modifyprofileForm = $this->modifyProfileForm();
+    	$user = $this->_getparam('user');
+    	$user = $this->_adminModel->getUserByName($user);
+    	$form = $this->_form;
+    	$form->populate($user);
+    	
+    } 
+    
+    private function modifyProfileForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_User_Add();
+    	$this->_form-> setName('updateUser');
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'updateuser'),
+    			'default'
+    			));
+    	return $this->_form;
     }
     
     

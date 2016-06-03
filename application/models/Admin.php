@@ -157,9 +157,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	public function updateUser($info, $code){
 		return $this->getResource('User')->updateUser($info, $code);
 	}
-	
-	public function getUserByUser($info){
-		return $this->getResource('User')->getUserByUser($info);
+
+	public function getUserByName($info)
+	{
+		return $this->getResource('User')->getUserByName($info);
 	}
 	
 	/**** Fine Utente Registrato ****/
@@ -188,10 +189,5 @@ class Application_Model_Admin extends App_Model_Abstract{
 	}
 	
 	/**** Fine F.A.Q ****/
-	
-	public function getUserByName($info)
-	{
-		return $this->getResource('User')->getUserByName($info);
-	}
 
 }

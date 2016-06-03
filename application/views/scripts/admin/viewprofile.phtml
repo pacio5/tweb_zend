@@ -14,7 +14,11 @@
 					<h5><?= strtoupper($this->authInfo('role'));?></h5>
 				</div>
 				<div class="col-sm-3 password">
-					<a href="#" class="h4"><small>Modifica profilo</small></a>
+					<a href="<?= $this->url(array(
+					'controller' => 'admin',
+					'action' => 'modifyprofile',
+					'user' => $this->authInfo('user')),
+					'default', true); ?>" class="h4"><small>Modifica profilo</small></a>
 				</div>
 			</div>
 		</div>
