@@ -1,3 +1,31 @@
+/**<?php $this->headScript()
+	->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
+	->appendFile($this->baseUrl('js/functions.js'))
+	->captureStart() ?>
+
+$(function()
+{
+	var actionUrl='<? echo $this->url(array('controller' => 'admin', 'action' => 'completeselect',), 'default'); ?>';
+	$('#selectbuild').change(function(event) {
+    		$.ajax({
+    			type: 'POST',
+    			url: 'admin/completeselect
+    			data: "build=" + $('selectbuild').val(),
+    			dataType: 'json',
+    			success: setFloor
+    		})
+    });
+});
+
+function setFloor(data){
+	$('#selectfloor').find('option').remove();	
+	$.each(data, function(key, val){
+		$('#provincia');
+	})
+}
+<?php $this->headScript()->captureEnd() ?> */
+
+
 <div class="row">
 	<div class="col-sm-12">
 		<h2 class="text-center">Nuovo Piano</h2>

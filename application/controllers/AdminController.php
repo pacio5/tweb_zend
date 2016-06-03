@@ -217,6 +217,20 @@ class AdminController extends Zend_Controller_Action
     			));
     	return $this->_form;
     }
+	
+	
+	/*public function completeselectAction(){
+		$parm=$_POST['build'];
+		$query="select Floor_number from Building where Name='".$parm."'";
+		$i=0;
+		foreach ($ris as $prov) {
+			$data['prov'.$i++]=$prov['Prov'];
+		};
+		header ('Content-Type: application/json');
+		echo json_encode($data);
+		mysqli_free_result($ris);
+		mysqli_close($conn);
+	}*/
     
     /**** End Floor ****/
     
