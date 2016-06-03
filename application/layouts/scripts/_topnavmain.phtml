@@ -28,6 +28,8 @@
 	<?php $role = $this->authInfo('role'); ?>
 	<?php if ($role == 'admin'): ?>
 		<li><a href="<?=$this->url ( array ('controller' => 'admin','action' => 'index' ), 'default', true );?>">Amministrazione</a></li>
+	<?php elseif ($role == 'staff'): ?>
+		<li><a href="<?=$this->url ( array ('controller' => 'staff','action' => 'index' ), 'default', true );?>">Amministrazione</a></li>
 	<?php endif; ?>
 	<?php if (!$log): ?>
 		<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'login' ), 'default', true );?>">Login</a></li>
