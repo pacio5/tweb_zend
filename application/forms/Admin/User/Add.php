@@ -5,6 +5,7 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 		$this->setName ( 'addstaff' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
+		$this->setAttrib ( 'id', 'adduser' );
 
 		$this->addElement ( 'text', 'user', array (
 				'label' => 'Username',

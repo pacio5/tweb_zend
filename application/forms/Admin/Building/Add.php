@@ -5,6 +5,7 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 		$this->setName ( 'addbuilding' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
+		$this->setAttrib('id', 'building_add');
 		
 		$this->addElement ( 'text', 'name', array (
 				'label' => 'Nome',
