@@ -1,6 +1,6 @@
 <?php $role = $this->authInfo('role'); ?>
 <ul class="nav navbar-right top-nav navbar-top-links">
-	<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'index' ), 'default', true );?>">Home Sito</a></li>
+	<li><a href="<?=$this->url ( array ('controller' => 'user','action' => 'index' ), 'default', true );?>">Home Sito</a></li>
 	<li class="dropdown"><a href="#" class="dropdown-toggle"
 		data-toggle="dropdown"><i class="fa fa-user"></i> <?= $this->authInfo('name') . ' ' . $this->authInfo('surname'); ?> <b
 			class="caret"></b></a>
