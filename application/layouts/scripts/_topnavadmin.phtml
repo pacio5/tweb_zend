@@ -1,30 +1,31 @@
+<?php $role = $this->authInfo('role'); ?>
 <ul class="nav navbar-right top-nav navbar-top-links">
 	<li><a href="<?=$this->url ( array ('controller' => 'public','action' => 'index' ), 'default', true );?>">Home Sito</a></li>
 	<li class="dropdown"><a href="#" class="dropdown-toggle"
 		data-toggle="dropdown"><i class="fa fa-user"></i> <?= $this->authInfo('name') . ' ' . $this->authInfo('surname'); ?> <b
 			class="caret"></b></a>
 		<ul class="dropdown-menu">
-			<li><a href="<?= $this->url(array(
-					'controller' => 'admin',
-					'action' => 'viewprofile'),
-					'default', true); ?>"><i class="fa fa-fw fa-user"></i> Profilo</a></li>
+		<?php if($role == 'admin'): ?>
+			<li><a href="<?= $this->url(array('controller' => 'admin', 'action' => 'viewprofile'), 'default', true); ?>"><i class="fa fa-fw fa-user"></i> Profilo</a></li>
 			<li class="divider"></li>
-			<li><a href="<?= $this->url(array(
-					'controller' => 'admin',
-					'action' => 'logout'),
-					'default', true); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+			<li><a href="<?= $this->url(array('controller' => 'admin', 'action' => 'logout'), 'default', true); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+		<?php else: ?>
+			<li><a href="<?= $this->url(array('controller' => 'staff', 'action' => 'viewprofile'), 'default', true); ?>"><i class="fa fa-fw fa-user"></i> Profilo</a></li>
+			<li class="divider"></li>
+			<li><a href="<?= $this->url(array('controller' => 'staff', 'action' => 'logout'), 'default', true); ?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+		<?php endif; ?>
 		</ul></li>
 </ul>
 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 <div class="collapse navbar-collapse navbar-ex1-collapse">
 	<ul class="nav navbar-nav side-nav">
+		<?php if($role == 'admin'): ?>
 		<li><a href="<?= $this->url(array(
 					'controller' => 'admin',
 					'action' => 'index'),
 					'default', true); ?>"><i class="fa fa-fw fa-dashboard"></i> Bacheca</a></li>
 		<li><a href="javascript:;" data-toggle="collapse"
-			data-target="#edifici"><i class="fa fa-fw fa-home"></i> Gestione
-				Edifici <i class="fa fa-fw fa-caret-down"></i></a>
+			data-target="#edifici"><i class="fa fa-fw fa-home"></i> Gestione Edifici <i class="fa fa-fw fa-caret-down"></i></a>
 			<ul id="edifici" class="collapse">
 				<li><a href="<?= $this->url(array(
 					'controller' => 'admin',
@@ -95,5 +96,11 @@
 					'action' => 'viewfaq'),
 					'default', true); ?>">Modifica / Cancella</a></li>
 			</ul></li>
+		<?php else: ?>
+		<li><a href="<?= $this->url(array(
+					'controller' => 'staff',
+					'action' => 'index'),
+					'default', true); ?>"><i class="fa fa-fw fa-dashboard"></i> Bacheca</a></li>
+		<?php endif; ?>
 	</ul>
 </div>
