@@ -29,7 +29,7 @@ class Application_Resource_User extends Zend_Db_Table_Abstract
     
     public function getUserByName($usrName)
     {
-        return $this->fetchRow($this->select()->where('user = ?', $usrName))->toArray();
+        return $this->fetchRow($this->select()->where('user = ?', $usrName));
     }
     
     public function updateUser($info, $code){

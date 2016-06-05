@@ -389,7 +389,7 @@ class AdminController extends Zend_Controller_Action
     	$code = $this->_getParam('user');
     	$user = $this->_adminModel->getUserByName($code);
     	$form = $this->_form;
-    	$form->populate($user);
+    	$form->populate($user->toArray());
     }
     
     public function updateuserAction(){
