@@ -26,4 +26,9 @@ class Application_Model_User extends App_Model_Abstract {
 	}
 	
 	/**** Fine profilo utente ****/
+	
+	/**** Piani ****/
+	public function getFloorNumberByCodeBuilding($info){
+		return $this->getResource('Floor')->getFloorNumberByCodeBuilding($info);
+	}
 }

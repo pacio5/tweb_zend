@@ -1,3 +1,25 @@
+<script>
+	$(function(){
+		$('#building_code').change(function(event){
+			$ajax({
+					type='POST',
+					url: '<?= $this->url(array('controller' => 'user', 'action' => 'register'), 'default'); ?>',
+					data: $('#building').val(),
+					datatype: 'json',
+					success: setFloor
+			});
+		});			
+	});
+
+
+	function setFloor(data){
+		$('#floor').find('option').remove();
+		$.each(data, function(key, val){
+			$('#floor').append('<option>' + val + '<option>');
+		});
+	}
+</script>
+
 <div class="row">
 	<div class="col-sm-12">
 		<h1 class="text-center" id="titolo">Registra La Tua Posizione</h1>

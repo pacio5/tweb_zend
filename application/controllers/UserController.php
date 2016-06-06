@@ -34,6 +34,15 @@ class UserController extends Zend_Controller_Action {
 	public function addpositionAction() {
 	}
 	
+	public function registerAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		$request = $this->getRequest()->getPost();
+		$building = $request['data'];
+		$floor_number = $this->_userModel->getFloorNumberByCodeBuilding($building);
+	}
+	
 	/**
 	 * ** Fine registra la posizione ***
 	 */
