@@ -5,4 +5,17 @@ class Application_Model_Staff extends App_Model_Abstract
 	{
 		
 	}
+	
+	/**** Profilo utente ****/
+	
+	public function updateUser($info, $code){
+		return $this->getResource('User')->updateUser($info, $code);
+	}
+	
+	public function getUserByName($info)
+	{
+		return $this->getResource('User')->getUserByName($info);
+	}
+	
+	/**** Fine profilo utente ****/
 }

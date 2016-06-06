@@ -61,9 +61,7 @@ class UserController extends Zend_Controller_Action {
 	 * ** Fine segnala pericolo ***
 	 */
 	
-	/**
-	 * ** Profile ***
-	 */
+	/***** Profile ****/
 	public function viewprofileAction() {
 	}
 	public function modifyprofileAction() {
@@ -101,7 +99,5 @@ class UserController extends Zend_Controller_Action {
 		return $this->_form;
 	}
 
-/**
- * ** End Profile ***
- */
+	/**** End Profile ****/
 }
