@@ -96,24 +96,7 @@ class PublicController extends Zend_Controller_Action
     /**** Contatti ****/
     
     public function contactAction(){
-    	$this->view->contactForm = $this->getContactForm();
     }
-    
-    public function sendAction(){
-    	
-    }
-    
-    private function getContactForm(){
-    	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_form = new Application_Form_Public_Contact_Send();
-    	$this->_form->setAction($urlHelper->url(array(
-    			'controller' => 'public',
-    			'action' => 'send'),
-    			'default'
-    			));
-    	return $this->_form;
-    }
-    
     /**** Fine Contatti ****/
     
     /**** F.A.Q ****/
