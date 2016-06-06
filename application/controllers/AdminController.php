@@ -514,7 +514,7 @@ class AdminController extends Zend_Controller_Action
     	$user = $this->_getparam('user');
     	$user = $this->_adminModel->getUserByName($user);
     	$form = $this->_form;
-    	$form->populate($user);
+    	$form->populate($user->toArray());
     	
     } 
     

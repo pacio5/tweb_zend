@@ -13,6 +13,14 @@
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!-- Validazione -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
+<?= $this->headScript()->appendFile($this->baseUrl('/js/validate.js')); ?>
+
 </head>
 <body>
 	<!-- Fixed navbar -->
@@ -23,10 +31,13 @@
 				<span class="sr-only"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span> <span class="icon-bar"></span>
 			</button>
-			<?= $this->render('_topnavmain.phtml') ?>
+			<?= $this->render('_topnavmain.phtml')?>
+	
+	
 	</nav>
 	<div class="img-principale hidden-xs">
-		<img src="<?= $this->baseUrl('css/images/blueprint.png'); ?>" class="img-responsive" alt="" title="" />
+		<img src="<?= $this->baseUrl('css/images/blueprint.png'); ?>"
+			class="img-responsive" alt="" title="" />
 	</div>
 	<div class="container">
 		<?php echo $this->layout()->content; ?>
@@ -41,16 +52,15 @@
 					<p>
 						<a href="mailto:sops@sops.com"><i class="fa fa-envelope"></i>
 							sops@sops.com</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <a
-							href="tel:+39 0000 000 000"><i class="fa fa-phone"></i> +39
-							0000 000 000 </a>
+							href="tel:+39 0000 000 000"><i class="fa fa-phone"></i> +39 0000
+							000 000 </a>
 					</p>
 				</div>
 				<div class="col-sm-4 text-right">
-					<p><a href="<?= $this->url(array(
-									'controller' => 'public',
-									'action' => 'faq',
-									), 
-									'default', true);?>">F.A.Q.</a></p>
+					<p>
+						<a
+							href="<?=$this->url ( array ('controller' => 'public','action' => 'faq' ), 'default', true );?>">F.A.Q.</a>
+					</p>
 				</div>
 			</footer>
 		</div>
@@ -58,12 +68,6 @@
 	<div id="back_to_top">
 		<a href="#"><i class="fa fa-caret-square-o-up fa-4x"></i></a>
 	</div>
-	<!-- jQuery -->
-	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<!-- Bootstrap Core JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 	<script>
 		$(document).ready(function() {

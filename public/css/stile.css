@@ -94,17 +94,17 @@ footer {
 	width: 180px;
 }
 
-.utente h5 {
+.utente .h5 {
 	color: #9a9a9a;
 }
 
-.dati-utente h5:last-child {
+.dati-utente .h5:last-child {
 	color: #9a9a9a;
 }
 
 @media ( min-width :768px) {
 	.dati-utente {
-		padding: 25px;
+		padding: 10px;
 	}
 	.utente {
 		margin-top: 10px;
