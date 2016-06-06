@@ -10,12 +10,12 @@
 					<p class="h5">Username : <?= $this->authInfo('user');?></p>
 				</div>
 				<div class="col-sm-3 dati-utente">
-					<h3>Ruolo</h3>
-					<h5><?= strtoupper($this->authInfo('role'));?></h5>
+					<p class="h3">Ruolo</p>
+					<p class="h5"><?= strtoupper($this->authInfo('role'));?></p>
 				</div>
 				<div class="col-sm-3 password">
 					<a href="<?= $this->url(array(
-					'controller' => 'admin',
+					'controller' => 'staff',
 					'action' => 'modifyprofile',
 					'user' => $this->authInfo('user')),
 					'default', true); ?>" class="h4"><small>Modifica profilo</small></a>
