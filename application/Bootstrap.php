@@ -38,7 +38,12 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 		$this->_view->headLink()->appendStylesheet("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css");
 		// CSS Font Awesome
 		$this->_view->headLink()->appendStylesheet("https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css");
-		
+		$this->_view->headScript()
+		->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+		->appendFile('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+		->appendFile('https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js')
+		->appendFile($this->_view->baseUrl('/js/validate.js'))
+		->appendFile($this->_view->baseUrl('/js/function.js'));
 	}
 	
 	protected function _initDefaultModuleAutoloader()

@@ -5,6 +5,7 @@
 <?= $this->headLink()->appendStylesheet($this->baseUrl('css/stile.css'));?>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <?= $this->headTitle('SOPS Escape'); ?>
+<?= $this->headScript(); ?>
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -12,14 +13,6 @@
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-<!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<!-- Validazione -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.min.js"></script>
-<?= $this->headScript()->appendFile($this->baseUrl('/js/validate.js')); ?>
 
 </head>
 <body>
@@ -68,30 +61,5 @@
 	<div id="back_to_top">
 		<a href="#"><i class="fa fa-caret-square-o-up fa-4x"></i></a>
 	</div>
-
-	<script>
-		$(document).ready(function() {
-
-			// Intercetto lo scroll di pagina
-			$(window).scroll(function() {
-				if ($(this).scrollTop() > 600) {
-					// Se l'evento scroll si verifica e supera i 400px, mostro l'icona
-					$("#back_to_top").show(1000);
-				}
-				// Se si verifica il ritorno sopra i 400px, nascondo l'icona 
-				if ($("body").scrollTop() < 400) {
-					$("#back_to_top").hide(1000);
-				}
-			});
-
-			// Al click sull'icona, torno ad inizio pagina con movenza fluida
-			$("#back_to_top").click(function() {
-				$("html,body").animate({
-					scrollTop : 0
-				}, 1500, function() {
-				});
-			});
-		});
-	</script>
 </body>
 </html>
