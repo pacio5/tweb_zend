@@ -57,6 +57,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	public function getFloorByCode($info){
 		return $this->getResource('Floor')->getFloorByCode($info);
 	}
+	
+	public function getFloorNumberByCodeBuilding($info){
+		return $this->getResource('Building')->getFloorNumberByCodeBuilding($info);
+	}
 
 	/**** Fine Piani ****/
 	

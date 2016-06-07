@@ -219,18 +219,17 @@ class AdminController extends Zend_Controller_Action
     }
 	
 	
-	/*public function completeselectAction(){
-		$parm=$_POST['build'];
-		$query="select Floor_number from Building where Name='".$parm."'";
-		$i=0;
-		foreach ($ris as $prov) {
-			$data['prov'.$i++]=$prov['Prov'];
-		};
-		header ('Content-Type: application/json');
-		echo json_encode($data);
-		mysqli_free_result($ris);
-		mysqli_close($conn);
-	}*/
+	public function completefloorAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		
+		$param = $this->_getParam('code');
+		
+		$res = $this->_adminModel->getFloorNumberByCodeBuilding($param);
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
     
     /**** End Floor ****/
     

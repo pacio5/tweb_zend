@@ -20,8 +20,9 @@
 							</tr>
 						</thead>
 						<tbody>
-						<?php foreach ($this->building as $building){
-							foreach ($this->floor as $floor){?>
+						<?php foreach ($this->floor as $floor){
+							  foreach ($this->building as $building){
+							  	if ($building->code == $floor->building_code){?>
 							<tr>
 								<td><a href="<?=$this->url(array(
 													'controller' => 'admin',
@@ -40,7 +41,7 @@
 								<td><?= $floor->zone_number;?></td>
 								<td><?= $floor->image;?></td>
 							</tr>
-						<?php }; }; ?>
+						<?php }; }; }; ?>
 						</tbody>
 					</table>
 				</div>

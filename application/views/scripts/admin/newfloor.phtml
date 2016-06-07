@@ -1,29 +1,28 @@
-/**<?php $this->headScript()
-	->appendFile('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js')
-	->appendFile($this->baseUrl('js/functions.js'))
-	->captureStart() ?>
+<script>
+	$(function(){
+		$('#building_code').change(function(event){
+			$.ajax({
+					type: 'POST',
+					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'completefloor'), 'default'); ?>',
+					data: "code="+$('#building_code').val(),
+					datatype: 'json',
+					success: setFloor
+			});
+		});			
+	});
 
-$(function()
-{
-	var actionUrl='<? echo $this->url(array('controller' => 'admin', 'action' => 'completeselect',), 'default'); ?>';
-	$('#selectbuild').change(function(event) {
-    		$.ajax({
-    			type: 'POST',
-    			url: 'admin/completeselect
-    			data: "build=" + $('selectbuild').val(),
-    			dataType: 'json',
-    			success: setFloor
-    		})
-    });
-});
 
-function setFloor(data){
-	$('#selectfloor').find('option').remove();	
-	$.each(data, function(key, val){
-		$('#provincia');
-	})
-}
-<?php $this->headScript()->captureEnd() ?> */
+	function setFloor(data){
+		$('#number').find('option').remove();
+		
+        var floor = parseInt(data['floor_number']);
+        
+		for(var i=0; i<floor; i++){
+			$('#number').append("<option>" + i + "</option>");
+		};
+		
+	}
+</script>
 
 
 <div class="row">

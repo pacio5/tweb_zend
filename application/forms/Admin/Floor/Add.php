@@ -26,20 +26,22 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 
 		$this->addElement ( 'select', 'number', array (
 				'label' => 'Numero Piano',
-				
+				'required' => true,
+				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'text', 'zone_number', array (
 				'label' => 'Numero Zone',
-				
+				'required' => true,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'file', 'image', array (
 				'label' => 'Planimetria',
+				'required' => true,
 				'destination' => APPLICATION_PATH . '/../public/images',
 				'validators' => array (
 						array ( 'Count', false, 1 ),
