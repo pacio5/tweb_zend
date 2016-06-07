@@ -14,10 +14,19 @@
 
 	function setFloor(data){
 		$('#floor_number').find('option').remove();
+
+		
+		$.each(data, function(key, val){
+            $('#floor_number').append("<option value='"+val+"'>" + val + "</option>");
+        });
+        
+        
+        /*
 		for(var i=0; i<data['floor_number']; i++){
 			var option = "<option value='"+i+">" + i + "<option>";
 			$('#floor_number').append(option);
 		};
+		*/
 	}
 </script>
 
