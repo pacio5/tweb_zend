@@ -38,9 +38,12 @@ class UserController extends Zend_Controller_Action {
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->_helper->viewRenderer->setNoRender();
 		
-		$request = $this->getRequest()->getPost();
-		$building = $request['data'];
-		$floor_number = $this->_userModel->getFloorNumberByCodeBuilding($building);
+		$param = $this->getRequest()->getPost('data');
+		$res = $this->_userModel->getFloorNumberByCodeBuilding($param);
+		
+		$data = '{ "floor_number": "4"}';
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody($data);
 	}
 	
 	/**

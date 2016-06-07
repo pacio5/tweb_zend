@@ -1,10 +1,11 @@
 <script>
 	$(function(){
 		$('#building_code').change(function(event){
-			$ajax({
-					type='POST',
+			var code = $('#building_code').val();
+			$.ajax({
+					type: 'POST',
 					url: '<?= $this->url(array('controller' => 'user', 'action' => 'register'), 'default'); ?>',
-					data: $('#building').val(),
+					data: $('#building_code').val(),
 					datatype: 'json',
 					success: setFloor
 			});
@@ -13,10 +14,11 @@
 
 
 	function setFloor(data){
-		$('#floor').find('option').remove();
-		$.each(data, function(key, val){
-			$('#floor').append('<option>' + val + '<option>');
-		});
+		$('#floor_number').find('option').remove();
+		for(var i=0; i<data['floor_number']; i++){
+			var option = "<option value='"+i+">" + i + "<option>";
+			$('#floor_number').append(option);
+		};
 	}
 </script>
 
@@ -29,6 +31,6 @@
 		<?=$this->registerpositionForm; ?>
 	</div>
 	<div class="col-sm-8">
-		<img src="images/planimetria.jpg" class="img-responsive" />
+		<!-- <img src="images/planimetria.jpg" class="img-responsive" /> -->
 	</div>
 </div>

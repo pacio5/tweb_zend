@@ -33,9 +33,4 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 		$this->insert ( $info );
 	}
 	
-	// Prende il numero di piani a partire dal codice di un edificio
-	public function getFloorNumberByCodeBuilding($info) {
-		$select = $this->select ()->where('building_code = ?', $info);
-		return $this->fetchRow( $select )->toArray();
-	}
 }
