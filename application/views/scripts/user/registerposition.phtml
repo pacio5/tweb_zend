@@ -1,11 +1,10 @@
 <script>
 	$(function(){
 		$('#building_code').change(function(event){
-			var code = $('#building_code').val();
 			$.ajax({
 					type: 'POST',
 					url: '<?= $this->url(array('controller' => 'user', 'action' => 'register'), 'default'); ?>',
-					data: $('#building_code').val(),
+					data: "code="+$('#building_code').val(),
 					datatype: 'json',
 					success: setFloor
 			});
