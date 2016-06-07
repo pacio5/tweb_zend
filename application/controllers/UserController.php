@@ -43,9 +43,8 @@ class UserController extends Zend_Controller_Action {
 		
 		$res = $this->_userModel->getFloorNumberByCodeBuilding($param);
 		
-		$data = '{ "floor_number": "'.$res['floor_number'].'"}';
 		
-		$this->getResponse()->setHeader('Content-type','application/json')->setBody($data);
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
 	
 	/**
