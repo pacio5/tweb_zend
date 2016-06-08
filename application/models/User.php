@@ -31,4 +31,23 @@ class Application_Model_User extends App_Model_Abstract {
 	public function getFloorNumberByCodeBuilding($info){
 		return $this->getResource('Building')->getFloorNumberByCodeBuilding($info);
 	}
+	
+	public function getBuildingFloor($info){
+		return $this->getResource('Floor')->getBuildingFloor($info);
+	}
+	
+	public function getFloorZone($info){
+		return $this->getResource('Zone')->getFloorZone($info);
+	}
+	
+	public function getFloorByCode($info){
+		return $this->getResource('Floor')->getFloorByCode($info);
+	}
+	
+	/**** Fine Piani ****/
+	
+	/**** Registra posizione ****/
+	public function addPosition($values, $code){
+		return $this->getResource('User')->addPosition($values, $code);
+	}
 }

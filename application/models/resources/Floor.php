@@ -13,8 +13,8 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 	}
 	
 	public function getFloorByCode($info) {
-		$select = $this->select ()->where('building_code = ?', $info);
-		return $this->fetchRow( $select )->toArray();
+		$select = $this->select ()->where('code = ?', $info);
+		return $this->fetchRow( $select );
 	}
 	
 	// Cancella piani dal db
@@ -31,6 +31,12 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 	// inserisce un nuovo piano
 	public function insertFloor($info) {
 		$this->insert ( $info );
+	}
+	
+	// Prende tutti i piani di un edificio
+	public function getBuildingFloor($info){
+		$select = $this->select()->where('building_code = ?', $info)->order('number');
+		return $this->fetchAll($select);
 	}
 	
 }

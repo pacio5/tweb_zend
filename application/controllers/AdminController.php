@@ -224,7 +224,7 @@ class AdminController extends Zend_Controller_Action
 		$this->_helper->viewRenderer->setNoRender();
 		
 		
-		$param = $this->_getParam('code');
+		$param =(int) $this->_getParam('code');
 		
 		$res = $this->_adminModel->getFloorNumberByCodeBuilding($param);
 		

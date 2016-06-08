@@ -36,4 +36,9 @@ class Application_Resource_User extends Zend_Db_Table_Abstract
     	$where = "user = '$code'";
     	$this->update($info, $where);
     }
+    
+    public function addPosition($values, $code){
+    	$where = "user = '$code'";
+    	$this->update($values, $where);
+    }
 }

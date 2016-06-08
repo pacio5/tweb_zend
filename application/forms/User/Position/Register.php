@@ -26,14 +26,14 @@ class Application_Form_User_Position_Register extends App_Form_Abstract {
 		
 		$this->addElement ( 'select', 'floor_number', array (
 				'label' => 'Numero Piano',
-		
+				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'select', 'zone_number', array (
 				'label' => 'Numero Zona',
-		
+				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );

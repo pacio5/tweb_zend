@@ -67,26 +67,12 @@ footer {
 	margin-right: auto
 }
 
-.container-small {
-	width: 250px;
-}
-
-.container-small #loginForm {
-	padding-left: 10%;
-	padding-right: 10%;
-}
-
-.container-small #loginForm input {
-	margin: 5px;
-}
-
-.container-small #loginForm button {
-	display: block;
-	margin: 0 auto;
-}
-
 .icone-principali i {
 	display: block;
+}
+
+.desc_short{
+	padding:30px;
 }
 
 /* Pagina Profilo */

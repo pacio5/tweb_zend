@@ -32,4 +32,10 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 	public function insertZone($info) {
 		$this->insert ( $info );
 	}
+	
+	// Prende tutte le zone di un piano
+	public function getFloorZone($info){
+		$select = $this->select()->where('floor_code = ?', $info)->order('number');
+		return $this->fetchAll($select);
+	}
 }

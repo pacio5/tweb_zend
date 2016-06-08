@@ -14,9 +14,7 @@ class UserController extends Zend_Controller_Action {
 		return $this->_helper->redirector ( 'index', 'public' );
 	}
 	
-	/**
-	 * ** Registra la posizione ***
-	 */
+	/**** Registra la posizione ****/
 	public function registerpositionAction() {
 		$this->view->registerpositionForm = $this->getPositionForm ();
 	}
@@ -32,17 +30,47 @@ class UserController extends Zend_Controller_Action {
 		return $this->_form;
 	}
 	public function addpositionAction() {
+		$this->view->registerpositionForm = $this->getPositionForm ();
+		$auth = new Application_Service_Auth();
+		
+		if(!$this->getRequest()->isPost()){
+			$this->_helper->redirector('index');
+		}
+		 
+		$form = $this->_form;
+		if(!$form->isValid($_POST)){
+			$form->setDescription('Attenzione: dati inseriti errati');
+			return $this->render('registerposition');
+		}
+		$values = $form->getValues();
+		$data = array('position' => $values['zone_number']);
+		$this->_userModel->addPosition($data, $auth->getIdentity()->user );
+		$this->_helper->redirector('index');
 	}
 	
 	public function floornumberAction(){
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->_helper->viewRenderer->setNoRender();
 		
+		$param = (int)$this->_getParam('code');
 		
-		$param = $this->_getParam('code');
+		$res = $this->_userModel->getBuildingFloor($param);
 		
-		$res = $this->_userModel->getFloorNumberByCodeBuilding($param);
 		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
+	
+	public function zonenumberAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		$param = (int)$this->_getParam('code');
+		
+		$res = $this->_userModel->getFloorZone($param)->toArray();
+		
+		$floor = $this->_userModel->getFloorByCode($param);
+		
+		$res['floor_map']= $floor['image'];
 		
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
