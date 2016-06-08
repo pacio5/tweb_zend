@@ -1,6 +1,6 @@
-<?php $log = Zend_Auth::getInstance()->hasIdentity(); ?>
+<?php $log = $this->authInfo('role'); ?>
 
-<a class="navbar-brand logo" href="<?php if (!$log):?>
+<a class="navbar-brand logo" href="<?php if ($log == 'unregistered'):?>
 	<?= $this->url(array('controller' => 'public','action' => 'index',),'default', true); ?>
 	<?php else :?>
 	<?= $this->url(array('controller' => 'user','action' => 'index',),'default', true); ?>
