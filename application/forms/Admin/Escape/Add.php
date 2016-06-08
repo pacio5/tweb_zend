@@ -10,34 +10,29 @@ class Application_Form_Admin_Escape_Add extends App_Form_Abstract {
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
 			
 
-		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
-		$building = array('--SELECT--');
+		//Estraggo i nomi delle vie dal model e li inserisco nella SELECT
+		$escape = array('--SELECT--');
 		$this->_adminModel = new Application_Model_Admin();
-		$build = $this->_adminModel->viewBuilding();
-		foreach ($build as $bui) {
-			$building[$bui -> code] = $bui->name;
+	//	$build = $this->_adminModel->viewBuilding();
+		foreach ($escape_map as $esc) {
+			$escape[$esc -> code] = $esc->name;
 		}
-		$this->addElement ( 'select', 'building_code', array (
-				'label' => 'Edificio',
+		$this->addElement ( 'select', 'code', array (
+				'label' => 'Via Di Fuga',
 				'required' => true,
-				'multiOptions' => $building,
+				'multiOptions' => $escape,
 				'decorators' => $this->elementDecorators,
 		) );
 
-		$this->addElement ( 'select', 'number', array (
-				'label' => 'Numero Piano',
+		$this->addElement ( 'text', 'zone_code', array (
+				'label' => 'Numero Zona',
 				'required' => true,
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 
-		$this->addElement ( 'text', 'zone_number', array (
-				'label' => 'Numero Zone',
-				'required' => true,
-				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
-		) );
+
 
 		$this->addElement ( 'file', 'image', array (
 				'label' => 'Planimetria',
