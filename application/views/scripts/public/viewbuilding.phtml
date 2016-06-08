@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-sm-12">
+		<h1 class="text-center">Elenco Edifici</h1><hr/>
+	</div>
+</div>
+<?php foreach($this->building as $building) :?>
+<div class="row">
+	<div class="col-sm-5">
+		<p class="h2"><?= $building->name; ?></p>
+		<p class="h5"><?= $building->address; ?></p>
+	</div>
+	<div class="col-sm-7">
+		<p class="desc_short"> <?= $building->desc_short; ?></p>
+	</div>
+</div>
+<hr/>
+<?php endforeach; ?>

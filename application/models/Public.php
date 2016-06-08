@@ -13,5 +13,9 @@ class Application_Model_Public extends App_Model_Abstract{
 		return $this->getResource('Faq')->getFaq();
 	}
 	
+	public function getBuilding(){
+		return $this->getResource('Building')->getBuilding();
+	}
+	
 
 }

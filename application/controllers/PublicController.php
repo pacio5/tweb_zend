@@ -107,6 +107,12 @@ class PublicController extends Zend_Controller_Action
     }
     
     /**** Fine F.A.Q ****/
+    
+    /**** Visualizza Edifici ****/
+    public function viewbuildingAction(){
+    	$building = $this->_publicModel->getBuilding();
+    	$this->view->assign(array('building' => $building));
+    }
 
 }
 
