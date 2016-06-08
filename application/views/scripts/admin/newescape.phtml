@@ -1,0 +1,37 @@
+<script>
+	$(function(){
+		$('#zone_code').change(function(event){
+			$.ajax({
+					type: 'POST',
+					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'completeescape_map'), 'default'); ?>',
+					data: "code="+$('#zone_code').val(),
+					datatype: 'json',
+					success: setEscape_map
+			});
+		});			
+	});
+
+
+	function setEscape_map(data){
+		$('#zone_code').find('option').remove();
+		
+        var zone = parseInt(data['number']);
+        
+		for(var i=0; i<number; i++){
+			$('#zone_code').append("<option>" + i + "</option>");
+		};
+		
+	}
+</script>
+
+
+<div class="row">
+	<div class="col-sm-12">
+		<hgroup id="titolo">
+			<h2 class="text-center">Nuova Via di Fuga</h2>
+			<h4 class="text-center">Utilizza questa form per inserire una nuova
+				via di fuga per una Zona</h4>
+		</hgroup>
+		<?= $this->floorForm; ?>
+	</div>
+</div>

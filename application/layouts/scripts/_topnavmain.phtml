@@ -2,9 +2,9 @@
 
 <a class="navbar-brand logo" href="<?php if (!$log):?>
 	<?= $this->url(array('controller' => 'public','action' => 'index',),'default', true); ?>
-	<? else :?>
+	<?php else :?>
 	<?= $this->url(array('controller' => 'user','action' => 'index',),'default', true); ?>
-	<? endif; ?>
+	<?php endif; ?>
 	">SOPS ESCAPE</a>
 </div>
 <div class="collapse navbar-collapse">

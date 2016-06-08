@@ -99,6 +99,16 @@ class AdminController extends Zend_Controller_Action
    				'building' => $building));
    		
     }
+    /* Visualizza Vie di Fuga */
+    public function viewescapeAction(){
+    	 
+    	// Recupera gli edifici dal database
+    	$escape_map = $this->_adminModel->viewEscape();    	
+    	// Passo alla view le vie di fuga
+    	$this->view->assign(array(
+    			'escape_map' => $escape_map));
+    	 
+    }
     
     public function deletebuildingAction(){
     	$code = $this->_getParam('code');
