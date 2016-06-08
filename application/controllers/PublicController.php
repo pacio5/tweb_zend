@@ -13,7 +13,8 @@ class PublicController extends Zend_Controller_Action
     }
 
     public function indexAction(){
-    	
+    	if($this->_authService->getIdentity()->role)
+    		return $this->_helper->redirector('index', $this->_authService->getIdentity()->role);
     }
     
     public function viewstaticAction () {
