@@ -1,12 +1,21 @@
 <div class="row icone-principali">
 	<div class="col-sm-4">
 		<div class="text-center">
+				<?php if($this->position == NULL) : ?>
 			<a href="<?= $this->url(array(
 					'controller' => 'user',
 					'action' => 'registerposition'),
 					'default', true); ?>"> <i class="fa fa-map-marker fa-5x"></i><br /> 
 			<span class="h3">Registra La Tua Posizione</span></a>
 			<p>Testo di prova testo di prova</p>
+		<?php else :?>
+			<a href="<?= $this->url(array(
+					'controller' => 'user',
+					'action' => 'deleteposition'),
+					'default', true); ?>"> <i class="fa fa-map-marker fa-5x"></i><br /> 
+			<span class="h3">Cancella la tua posizione</span></a>
+			<p>Testo di prova testo di prova</p>
+		<?php endif; ?>
 		</div>
 	</div>
 	<div class="col-sm-4">

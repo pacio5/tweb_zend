@@ -50,4 +50,10 @@ class Application_Model_User extends App_Model_Abstract {
 	public function addPosition($values, $code){
 		return $this->getResource('User')->addPosition($values, $code);
 	}
+	
+	// Cancella Posizione
+	
+	public function deletePosition($info){
+		return $this->getResource('User')->deletePosition($info);
+	}
 }

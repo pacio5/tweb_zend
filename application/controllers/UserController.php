@@ -2,13 +2,18 @@
 class UserController extends Zend_Controller_Action {
 	protected $_form;
 	protected $_userModel;
+	protected $_authService;
 	public function init() {
 		$this->_helper->layout->setLayout ( 'main' );
 		$this->_authService = new Application_Service_Auth ();
 		$this->_userModel = new Application_Model_User();
 	}
 	public function indexAction() {
+		$res = $this->_userModel->getUserByName($this->_authService->getIdentity()->user);
+		$position = $res['position'];
+		$this->view->assign(array('position' => $position));
 	}
+	
 	public function logoutAction() {
 		$this->_authService->clear ();
 		return $this->_helper->redirector ( 'index', 'public' );
@@ -31,7 +36,6 @@ class UserController extends Zend_Controller_Action {
 	}
 	public function addpositionAction() {
 		$this->view->registerpositionForm = $this->getPositionForm ();
-		$auth = new Application_Service_Auth();
 		
 		if(!$this->getRequest()->isPost()){
 			$this->_helper->redirector('index');
@@ -44,7 +48,7 @@ class UserController extends Zend_Controller_Action {
 		}
 		$values = $form->getValues();
 		$data = array('position' => $values['zone_number']);
-		$this->_userModel->addPosition($data, $auth->getIdentity()->user );
+		$this->_userModel->addPosition($data, $this->_authService->getIdentity()->user );
 		$this->_helper->redirector('index');
 	}
 	
@@ -75,9 +79,12 @@ class UserController extends Zend_Controller_Action {
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
 	
-	/**
-	 * ** Fine registra la posizione ***
-	 */
+	public function deletepositionAction(){
+		$this->_userModel->deletePosition($this->_authService->getIdentity()->user);
+		$this->_helper->redirector('index');
+	}
+	
+	/**** Fine registra la posizione ****/
 	public function escapeAction() {
 	}
 	
