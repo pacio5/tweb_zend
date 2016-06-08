@@ -1,11 +1,11 @@
 <?php
-class Application_Form_Admin_Exit_Add extends App_Form_Abstract {
+class Application_Form_Admin_Escape_Add extends App_Form_Abstract {
 
 	protected $_adminModel;
 
 	public function init() {
 		$this->setMethod ( 'post' );
-		$this->setName ( 'addexit' );
+		$this->setName ( 'addescape' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
 			

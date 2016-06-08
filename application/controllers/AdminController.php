@@ -99,16 +99,6 @@ class AdminController extends Zend_Controller_Action
    				'building' => $building));
    		
     }
-    /* Visualizza Vie di Fuga */
-    public function viewescapeAction(){
-    	 
-    	// Recupera gli edifici dal database
-    	$escape_map = $this->_adminModel->viewEscape();    	
-    	// Passo alla view le vie di fuga
-    	$this->view->assign(array(
-    			'escape_map' => $escape_map));
-    	 
-    }
     
     public function deletebuildingAction(){
     	$code = $this->_getParam('code');
@@ -332,6 +322,54 @@ class AdminController extends Zend_Controller_Action
     	return $this->_form;
     }
     /**** Fine Staff ****/
+    
+    /**** Escape ****/
+    /* Visualizza Vie di Fuga */
+    public function viewescapeAction(){
+    
+    	// Recupera gli edifici dal database
+    	$escape_map = $this->_adminModel->viewEscape();
+    	// Passo alla view le vie di fuga
+    	$this->view->assign(array(
+    			'escape_map' => $escape_map));
+    
+    }
+    public function newescapeAction(){
+    	$this->view->escapeForm = $this->getEscapeForm();
+    }
+    
+    // Genera il form per vie di fuga
+    private function getEscapeForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_Escape_Add();
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'addescape'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
+    
+    //Action per validare e caricare la via di fuga
+    public function addescapeAction(){
+    	$this->view->escapeForm = $this->getEscapeForm();
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	 
+    	$form = $this->_form;
+    	 
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('newescape');
+    	}
+    	 
+    	$values = $form->getValues();
+    	$this->_adminModel->newEscape($values);
+    	$this->_helper->redirector('viewescape');
+    }
+    
+    /**** Fine Escape ****/
     
     /**** Utente registrato ****/
    
