@@ -10,7 +10,7 @@
 <div class="collapse navbar-collapse">
 <ul class="nav navbar-nav">
 	<li><a href="
-	<?php if (!$log): ?>
+	<?php if ($log == 'unregistered'): ?>
 	<?=$this->url ( array ('controller' => 'public','action' => 'index' ), 'default', true );?>
 	<?php else :?>
 	<?=$this->url ( array ('controller' => 'user','action' => 'index' ), 'default', true );?>
