@@ -34,7 +34,7 @@ class UserController extends Zend_Controller_Action {
 	public function addpositionAction() {
 	}
 	
-	public function registerAction(){
+	public function floornumberAction(){
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->_helper->viewRenderer->setNoRender();
 		

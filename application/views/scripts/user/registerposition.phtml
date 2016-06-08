@@ -3,7 +3,7 @@
 		$('#building_code').change(function(event){
 			$.ajax({
 					type: 'POST',
-					url: '<?= $this->url(array('controller' => 'user', 'action' => 'register'), 'default'); ?>',
+					url: '<?= $this->url(array('controller' => 'user', 'action' => 'floornumber'), 'default'); ?>',
 					data: "code="+$('#building_code').val(),
 					datatype: 'json',
 					success: setFloor
@@ -22,6 +22,16 @@
 		};
 		
 	}
+	
+	$(function(){
+		$('#floor_number').change(function(event){
+			$.ajax({
+				type: 'POST',
+				url: '<?= $this->url(array('controller' => 'user', 'action' => 'zonenumber'), 'default'); ?>',
+				data: "code="+$('#fl
+			});
+		});
+	});
 </script>
 
 <div class="row">

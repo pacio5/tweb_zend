@@ -11,6 +11,7 @@ class Application_Form_User_Position_Register extends App_Form_Abstract {
 
 		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
 		$building = array();
+		$building['unselected'] = " -- Select --";
 		$this->_userModel = new Application_Model_User();
 		$build = $this->_userModel->viewBuilding();
 		foreach ($build as $bui) {
