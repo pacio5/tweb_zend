@@ -56,4 +56,11 @@ class Application_Model_User extends App_Model_Abstract {
 	public function deletePosition($info){
 		return $this->getResource('User')->deletePosition($info);
 	}
+	
+	/**** Fin Registra Posizione ****/
+	/**** Visualizza Via di Fuga ****/
+	public function getEscapeByZone($info){
+		return $this->getResource('Zone')->getEscapeByZone($info);
+	}
+	/**** Fine Visualizza Via di Fuga ****/
 }

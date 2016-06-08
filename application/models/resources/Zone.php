@@ -38,4 +38,10 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 		$select = $this->select()->where('floor_code = ?', $info)->order('number');
 		return $this->fetchAll($select);
 	}
+	
+	// Via di fuga 
+	public function getEscapeByZone($info){
+		$select = $this->select()->where('code = ?', $info);
+		return $this->fetchRow($select);
+	}
 }

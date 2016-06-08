@@ -85,12 +85,19 @@ class UserController extends Zend_Controller_Action {
 	}
 	
 	/**** Fine registra la posizione ****/
+	/**** Visualizza Via di Fuga ****/
 	public function escapeAction() {
+		$user = $this->_userModel->getUserByName($this->_authService->getIdentity()->user);
+		if($user['position'] == NULL)
+			$this->view->assign(array('escape_map' => NULL));
+		else{
+			$res = $this->_userModel->getEscapeByZone($user['position']);
+			$this->view->assign(array('escape_map' => $res['escape_map']));
+		}
 	}
+	/**** Fine via di fuga ****/
 	
-	/**
-	 * ** Segnala pericolo ***
-	 */
+	/**** Segnala pericolo ****/
 	public function alertAction() {
 		$this->view->alertForm = $this->getAlertForm ();
 	}
@@ -104,10 +111,9 @@ class UserController extends Zend_Controller_Action {
 		return $this->_form;
 	}
 	public function addalertAction() {
+		
 	}
-	/**
-	 * ** Fine segnala pericolo ***
-	 */
+	/**** Fine segnala pericolo ****/
 	
 	/***** Profile ****/
 	public function viewprofileAction() {
