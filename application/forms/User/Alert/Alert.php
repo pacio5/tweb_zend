@@ -27,14 +27,14 @@ class Application_Form_User_Alert_Alert extends App_Form_Abstract {
 		
 		$this->addElement ( 'select', 'floor_number', array (
 				'label' => 'Numero Piano',
-		
+				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'select', 'zone_number', array (
 				'label' => 'Numero Zona',
-		
+				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
@@ -42,7 +42,6 @@ class Application_Form_User_Alert_Alert extends App_Form_Abstract {
 		$this->addElement ( 'select', 'alert', array (
 				'label' => 'Tipo Pericolo',
 				'multiOptions' => $alert,
-				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
 		

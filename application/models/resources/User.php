@@ -27,21 +27,25 @@ class Application_Resource_User extends Zend_Db_Table_Abstract
     	return $this->fetchAll($select);
     }
     
+    // Recupera un utente dall'username
     public function getUserByName($user)
     {
         return $this->fetchRow($this->select()->where('user = ?', $user));
     }
     
+    // Aggiorna L'utente
     public function updateUser($info, $code){
     	$where = "user = '$code'";
     	$this->update($info, $where);
     }
     
+    // Aggiunge la posizione dell'utente
     public function addPosition($values, $code){
     	$where = "user = '$code'";
     	$this->update($values, $where);
     }
     
+    // Cancella la posizione
     public function deletePosition($info){
     	$where = "user = '$info'";
     	$this->update(array('position' => NULL), $where);

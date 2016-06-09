@@ -7,9 +7,12 @@ class Application_Model_User extends App_Model_Abstract {
 		return $this->getResource ( 'Building' )->getBuilding ();
 	}
 	
-	public function viewFloor()
-	{
-		return $this->getResource('Floor')->getFloor();
+	public function getFloorNumberByCodeBuilding($info){
+		return $this->getResource('Building')->getFloorNumberByCodeBuilding($info);
+	}
+	
+	public function getBuildingByCode($info){
+		return $this->getResource('Building')->getBuildingByCode($info);
 	}
 	
 	/**** Fine Edificio ****/
@@ -28,8 +31,9 @@ class Application_Model_User extends App_Model_Abstract {
 	/**** Fine profilo utente ****/
 	
 	/**** Piani ****/
-	public function getFloorNumberByCodeBuilding($info){
-		return $this->getResource('Building')->getFloorNumberByCodeBuilding($info);
+	public function viewFloor()
+	{
+		return $this->getResource('Floor')->getFloor();
 	}
 	
 	public function getBuildingFloor($info){
@@ -58,9 +62,22 @@ class Application_Model_User extends App_Model_Abstract {
 	}
 	
 	/**** Fin Registra Posizione ****/
+	
+	/**** Zone ****/
+	public function getZoneByCode($info){
+		return $this->getResource('Zone')->getZoneByCode($info);
+	}
+	
+	/**** Fine zone ****/
+	
 	/**** Visualizza Via di Fuga ****/
 	public function getEscapeByZone($info){
 		return $this->getResource('Zone')->getEscapeByZone($info);
 	}
 	/**** Fine Visualizza Via di Fuga ****/
+	/**** Segnala pericolo ****/
+	public function addAlert($info){
+		return $this->getResource('Alert')->addAlert($info);
+	}
+	
 }

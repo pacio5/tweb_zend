@@ -1,3 +1,54 @@
+<?php $this->headScript()->captureStart()?>
+	$(function(){
+		$('#building_code').change(function(event){
+			$.ajax({
+					type: 'POST',
+					url: '<?= $this->url(array('controller' => 'user', 'action' => 'floornumber'), 'default'); ?>',
+					data: "code="+$('#building_code').val(),
+					datatype: 'json',
+					success: setFloor
+			});
+		});			
+	});
+
+
+	function setFloor(data){
+		$('#floor_number').find('option').remove();
+		$('#zone_number').find('option').remove();
+		$('#floor_map').find('img').remove();
+		$('#floor_number').append('<option>-- Select --</option>');
+        var floor = parseInt(data['floor_number']);
+        $.each(data, function(key, val){
+            $('#floor_number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
+        });
+		
+	}
+	
+	$(function(){
+		$('#floor_number').change(function(event){
+			$.ajax({
+				type: 'POST',
+				url: '<?= $this->url(array('controller' => 'user', 'action' => 'zonenumber'), 'default'); ?>',
+				data: "code="+$('#floor_number').val(),
+				datatype: 'json',
+				success: setZone
+			});
+		});
+	});
+
+	function setZone(data){
+		$('#zone_number').find('option').remove();
+		$('#floor_map').find('img').remove();
+		$('#zone_number').append('<option>-- Select --</option>');
+		$('#floor_map').append('<img src=" <?= $this->baseUrl('/images/floor/')?>'+data['floor_map']+'" alt="Immagine Piano" class="img-responsive" />');
+		delete data['floor_map'];
+		var zone = parseInt(data['zone_number']);
+		$.each(data, function(key, val){
+	    	$('#zone_number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
+	    });
+	}
+<?php $this->headScript()->captureEnd()?>
+
 <div class="row">
 	<div class="col-sm-12">
 		<h1 class="text-center" id="titolo" >Segnala Pericolo</h1>

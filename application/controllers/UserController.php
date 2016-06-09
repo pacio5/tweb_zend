@@ -111,6 +111,36 @@ class UserController extends Zend_Controller_Action {
 		return $this->_form;
 	}
 	public function addalertAction() {
+		$this->view->alertForm = $this->getAlertForm ();
+		
+		if(!$this->getRequest()->isPost()){
+			$this->_helper->redirector('index');
+		}
+			
+		$form = $this->_form;
+		if(!$form->isValid($_POST)){
+			$form->setDescription('Attenzione: dati inseriti errati');
+			return $this->render('alert');
+		}
+		
+		$values = $form->getValues();
+		
+		$building = $this->_userModel->getBuildingByCode((int)$values['building_code']);
+		$floor = $this->_userModel->getFloorByCode((int)$values['floor_number']);
+		$zone = $this->_userModel->getZoneByCode((int)$values['zone_number']);
+		
+		$data = array(	'building' => $building['name'], 
+						'floor' => $floor['number'], 
+						'zone' => $zone['number'], 
+						'type' => $values['alert'],	
+						'user_code' => $this->_authService->getIdentity()->user,		
+						'date_time' => date("Y-m-d h:i:s"),
+						'progress' => 'Non Gestito',
+						'zone_code' => $zone['code']
+		);
+		
+		$this->_userModel->addAlert($data);
+		$this->_helper->redirector('index');
 		
 	}
 	/**** Fine segnala pericolo ****/

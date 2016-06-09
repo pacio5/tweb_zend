@@ -18,8 +18,7 @@
 		$('#floor_map').find('img').remove();
 		$('#floor_number').append('<option>-- Select --</option>'); 
 		var floor = parseInt(data['floor_number']); 
-		$.each(data,
-		function(key, val){ 
+		$.each(data,function(key, val){ 
 			$('#floor_number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
         });
 	}
@@ -39,11 +38,12 @@
 	function setZone(data){
 		$('#zone_number').find('option').remove();
 		$('#floor_map').find('img').remove();
-		$('#zone_number').append('<option>-- Select --</option>'); $('#floor_map').append(
-		'<img src=" <?= $this->baseUrl('/images/floor/')?>'+data['floor_map']+'" alt="Immagine Piano" class="img-responsive" />'); 
-		delete data['floor_map']; var zone = parseInt(data['zone_number']);
-		$.each(data, function(key, val){ 
-			$('#zone_number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
+		$('#zone_number').append('<option>-- Select --</option>');
+		$('#floor_map').append('<img src=" <?= $this->baseUrl('/images/floor/')?>'+data['floor_map']+'" alt="Immagine Piano" class="img-responsive" />');
+		delete data['floor_map'];
+		var zone = parseInt(data['zone_number']);
+		$.each(data, function(key, val){
+	    	$('#zone_number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
 	    });
 	}
 <?php $this->headScript()->captureEnd()?>
