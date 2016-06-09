@@ -10,21 +10,29 @@ class Application_Form_Admin_Escape_Add extends App_Form_Abstract {
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
 			
 
-		//Estraggo i nomi delle vie dal model e li inserisco nella SELECT
-		$escape = array('--SELECT--');
+		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
+		$building = array('--SELECT--');
 		$this->_adminModel = new Application_Model_Admin();
-	//	$build = $this->_adminModel->viewBuilding();
-		foreach ($escape_map as $esc) {
-			$escape[$esc -> code] = $esc->name;
-		}
-		$this->addElement ( 'select', 'code', array (
-				'label' => 'Via Di Fuga',
+        $build = $this->_adminModel->viewBuilding();
+        foreach ($build as $bui) {
+        	$building[$bui -> code] = $bui->name;       
+        }
+		$this->addElement ( 'select', 'building_code', array (
+				'label' => 'Edificio',
 				'required' => true,
-				'multiOptions' => $escape,
+				'multiOptions' => $building,
 				'decorators' => $this->elementDecorators,
 		) );
 
-		$this->addElement ( 'text', 'zone_code', array (
+		$this->addElement ( 'select', 'number', array (
+				'label' => 'Numero Piano',
+				'required' => true,
+				'registerInArrayValidator' => false,
+				'validators' => array('Int'),
+				'decorators' => $this->elementDecorators,
+		) );
+		
+		$this->addElement ( 'select', 'zone_code', array (
 				'label' => 'Numero Zona',
 				'required' => true,
 				'registerInArrayValidator' => false,

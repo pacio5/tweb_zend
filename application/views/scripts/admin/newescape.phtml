@@ -1,17 +1,49 @@
-<script>
+<?php $this->headScript()->captureStart()?>
 	$(function(){
 		$('#building_code').change(function(event){
 			$.ajax({
 					type: 'POST',
-					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'completeescape_map'), 'default'); ?>',
-					data: "code="+$('#zone_code').val(),
+					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'floornumber'), 'default'); ?>',
+					data: "code="+$('#building_code').val(),
 					datatype: 'json',
-					success: setEscape_map
+					success: setFloor
 			});
 		});			
 	});
 
 
+	function setFloor(data){
+		$('#number').find('option').remove();
+		$('#zone_code').find('option').remove();
+		$('#number').append('<option>-- Select --</option>'); 
+		var floor = parseInt(data['floor_number']); 
+		$.each(data,
+		function(key, val){ 
+			$('#number').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
+        });
+		
+	}
+	$(function(){
+		$('#number').change(function(event){
+			$.ajax({
+				type: 'POST',
+				url: '<?= $this->url(array('controller' => 'admin', 'action' => 'zonenumber'), 'default'); ?>',
+				data: "code="+$('#number').val(),
+				datatype: 'json',
+				success: setZone
+			});
+		});
+	});
+	
+	function setZone(data){
+		$('#zone_code').find('option').remove();
+		$('#zone_code').append('<option>-- Select --</option>'); 
+		delete data['floor_map']; var zone = parseInt(data['zone_number']);
+		$.each(data, function(key, val){ 
+			$('#zone_code').append('<option value="' + val['code'] + '">' + val['number'] + '</option>');
+	    });
+	}
+	
 	function setEscape_map(data){
 		$('#zone_code').find('option').remove();
 		
@@ -22,7 +54,7 @@
 		};
 		
 	}
-</script>
+<?php $this->headScript()->captureEnd()?>
 
 
 <div class="row">

@@ -206,6 +206,29 @@ class AdminController extends Zend_Controller_Action
 		
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
+	
+	public function floornumberAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+	
+		$param = (int)$this->_getParam('code');
+	
+		$res = $this->_adminModel->getBuildingFloor($param);
+	
+	
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
+	
+	public function zonenumberAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+	
+		$param = (int)$this->_getParam('code');
+	
+		$res = $this->_adminModel->getFloorZone($param)->toArray();
+	
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
     
     /**** End Floor ****/
     

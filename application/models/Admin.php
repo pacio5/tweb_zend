@@ -65,6 +65,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	public function verifyFloor($building, $floor){
 		return $this->getResource('Floor')->verifyFloor($building, $floor);
 	}
+	
+	public function getBuildingFloor($info){
+		return $this->getResource('Floor')->getBuildingFloor($info);
+	}
 
 	/**** Fine Piani ****/
 	
@@ -92,6 +96,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function getZoneByCode($info){
 		return $this->getResource('Zone')->getZoneByCode($info);
+	}
+	
+	public function getFloorZone($info){
+		return $this->getResource('Zone')->getFloorZone($info);
 	}
 
 	/**** Fine Zone ****/
