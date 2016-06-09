@@ -146,6 +146,13 @@ $(document).ready(function($){
 				maxlength:30
 			},
 			
+			mail:{
+				required:true,
+				email:true,
+				minlenght:5,
+				maxlength:50,
+			},
+			
 			name:{
 				required:true,
 				maxlength:30
@@ -169,6 +176,13 @@ $(document).ready(function($){
 			user:{
 				required:"Devi inserire un username",
 				maxlength:"Devi inserire un username di massimo 30 caratteri"
+			},
+			
+			mail:{
+				required:"Devi inserire un email",
+				email:"Inserisci un indirizzo email valido",
+				minlenght:"Inserisci un email valida di almeno 5 caratteri ",
+				maxlength:"Inserisci un email valida di massimo 50 caratteri ",
 			},
 		
 			name:{
@@ -227,6 +241,13 @@ $(document).ready(function($){
 				maxlength:30
 			},
 			
+			mail:{
+				required:true,
+				email:true,
+				minlenght:5,
+				maxlength:50,
+			},
+			
 			surname:{
 				required:true,
 				maxlength:30
@@ -250,6 +271,13 @@ $(document).ready(function($){
 			name:{
 				required:"Devi inserire un nome",
 				maxlength:"Devi inserire un nome di massimo 30 caratteri"
+			},
+			
+			mail:{
+				required:"Devi inserire un email",
+				email:"Inserisci un indirizzo email valido",
+				minlenght:"Inserisci un email valida di almeno 5 caratteri ",
+				maxlength:"Inserisci un email valida di massimo 50 caratteri ",
 			},
 			
 			surname:{
@@ -290,5 +318,93 @@ $(document).ready(function($){
 		}
 	});
 	
-	
+	// Validazione User
+	$("#registration").validate({
+		rules:{
+			user:{
+				required:true,
+				maxlength:30
+			},
+			
+			name:{
+				required:true,
+				maxlength:30
+			},
+			
+			mail:{
+				required:true,
+				email:true,
+				minlenght:5,
+				maxlength:50,
+			},
+			
+			surname:{
+				required:true,
+				maxlength:30
+			},
+			
+			password:{
+				required:true,
+				minlength:3,
+				maxlength:25
+			}
+		},
+		
+		// Messaggi d'errore
+		
+		messages:{
+			user:{
+				required:"Devi inserire un username",
+				maxlength:"Devi inserire un username di massimo 30 caratteri"
+			},
+		
+			name:{
+				required:"Devi inserire un nome",
+				maxlength:"Devi inserire un nome di massimo 30 caratteri"
+			},
+			
+			mail:{
+				required:"Devi inserire un email",
+				email:"Inserisci un indirizzo email valido",
+				minlenght:"Inserisci un email valida di almeno 5 caratteri ",
+				maxlength:"Inserisci un email valida di massimo 50 caratteri ",
+			},
+			
+			surname:{
+				required:"Devi inserire un cognome",
+				maxlength:"Devi inserire un nome di massimo 30 caratteri"
+			},
+			
+			password:{
+				required:"Devi inserire una password",
+				minlength:"Devi inserire una password di almeno 3 caratteri",
+				maxlength:"Devi inserire una password di massimo 25 caratteri"
+			},
+		},
+		
+		// Azioni da fare in caso di errore
+		highlight: function(element){
+			$(element).addClass("alert alert-danger");
+		},
+		//e quando l'errore viene risolto
+		unhighlight: function(element){
+			$(element).removeClass("alert alert-danger");
+		},
+		
+		// Eseguita in caso di errore, mostra il box informazione con gli errori
+		invalidHandler: function(e, validator) {
+			var errors = validator.numberOfInvalids();
+			var message = '';
+			if (errors) {
+				if(errors == 1)
+					message = 'Un campo è incompleto: per favore riempilo.';
+				else
+					message = 'Per favore, correggi i ' + errors + ' campi contrassegnati in rosso.';
+				$("div.alert").html(message);
+				$("div.alert").show();
+			} else {
+				$("div.alert").hide();
+			}
+		}
+	});
 });
