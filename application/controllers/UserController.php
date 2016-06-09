@@ -133,8 +133,7 @@ class UserController extends Zend_Controller_Action {
 						'floor' => $floor['number'], 
 						'zone' => $zone['number'], 
 						'type' => $values['alert'],	
-						'user_code' => $this->_authService->getIdentity()->user,		
-						'date_time' => date("Y-m-d h:i:s"),
+						'user_code' => $this->_authService->getIdentity()->user,
 						'progress' => 'Non Gestito',
 						'zone_code' => $zone['code']
 		);
