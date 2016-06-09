@@ -147,33 +147,6 @@ class AdminController extends Zend_Controller_Action
     	$this->_helper->redirector('viewfloor');
     }
     
-    public function modifyfloorAction(){
-    	$this->view->modifyfloorForm = $this->modifyFloorForm();
-    	$code = $this->_getParam('code');
-    	$floor = $this->_adminModel->getFloorByCode($code)->toArray();
-    	$form = $this->_form;
-    	$form->populate($floor);
-    }
-    
-    public function updatefloorAction(){
-    	$this->view->modifyfloorForm = $this->modifyFloorForm();
-    	$code = $this->_getParam('code');
-    	if(!$this->getRequest()->isPost()){
-    		$this->_helper->redirector('index');
-    	}
-    	
-    	$form = $this->_form;
-    	
-    	if(!$form->isValid($_POST)){
-    		$form->setDescription('Attenzione: dati inseriti errati');
-    		return $this->render('modifyfloor');
-    	}
-    	
-    	$values = $form->getValues();
-    	$this->_adminModel->updateFloor($values, $code);
-    	$this->_helper->redirector('viewfloor');
-    }
-    
     // Genera il form per i piani
     private function getFloorForm(){
     	$urlHelper = $this->_helper->getHelper('url');
@@ -206,19 +179,6 @@ class AdminController extends Zend_Controller_Action
     	$this->_helper->redirector('viewfloor');
     }
     
-    private function modifyFloorForm(){
-    	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_form = new Application_Form_Admin_Floor_Add();
-    	$this->_form-> setName('updateFloor');
-    	$this->_form->setAction($urlHelper->url(array(
-    			'controller' => 'admin',
-    			'action' => 'updatefloor'),
-    			'default'
-    			));
-    	return $this->_form;
-    }
-	
-	
 	public function completefloorAction(){
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->_helper->viewRenderer->setNoRender();

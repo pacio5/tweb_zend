@@ -12,7 +12,6 @@
 						<thead>
 							<tr>
 								<th><i class="fa fa-trash-o"></i></th>
-								<th><i class="fa fa-file-o"></i></th>
 								<th>Edificio</th>
 								<th>Numero</th>
 								<th>Numero Zone</th>
@@ -30,12 +29,6 @@
 													'code' => $floor->code
 													), 
 													'default', true); ?>"><i class="fa fa-times"></i></a></td>
-								<td><a href="<?=$this->url(array(
-													'controller' => 'admin',
-													'action' => 'modifyfloor',
-													'code' => $floor->code
-													), 
-													'default', true); ?>"><i class="fa fa-pencil-square-o"></i></a></td>
 								<td><?= $building->name;?></td>
 								<td><?= $floor->number;?></td>
 								<td><?= $floor->zone_number;?></td>
