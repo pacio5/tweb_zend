@@ -41,6 +41,15 @@ class Application_Form_User_User_Update extends App_Form_Abstract {
 						array('StringLength', true, array(3, 25))),
 				'decorators' => $this->elementDecorators,
 		) );
+		
+		$this->addElement ( 'text', 'mail', array (
+				'label'  	 => 'Email',
+				'required' 	 => true,
+				'filters'    => array('StringTrim'),
+				'validators' => array(
+						array('StringLength', true, array(5, 50))),
+				'decorators' => $this->elementDecorators,
+		) );
 
 
 		$this->addElement ( 'submit', 'registration', array (
