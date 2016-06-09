@@ -45,7 +45,7 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 				'destination' => APPLICATION_PATH . '/../public/images/floor',
 				'validators' => array (
 						array ( 'Count', false, 1 ),
-						array ( 'Size', false, 1024000 ),
+						array ( 'Size', false, 10000000 ),
 						array ( 'Extension', false, array ( 'jpg', 'gif', 'png' ) 
 						) 
 				) , 'decorators' => $this->elementDecorators,
