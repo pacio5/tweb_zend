@@ -150,10 +150,10 @@ class AdminController extends Zend_Controller_Action
     public function modifyfloorAction(){
     	$this->view->modifyfloorForm = $this->modifyFloorForm();
     	$code = $this->_getParam('code');
-    	$floor = $this->_adminModel->getFloorByCode($code);
+    	$floor = $this->_adminModel->getFloorByCode($code)->toArray();
     	$form = $this->_form;
     	$form->populate($floor);
-    } 
+    }
     
     public function updatefloorAction(){
     	$this->view->modifyfloorForm = $this->modifyFloorForm();
