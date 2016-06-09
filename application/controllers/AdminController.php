@@ -364,7 +364,9 @@ class AdminController extends Zend_Controller_Action
     	}
     	 
     	$values = $form->getValues();
-    	$this->_adminModel->newEscape($values);
+    	
+    	$data = array('zone_code' => $values['zone_code'] , 'image'=> $values['image']);
+    	$this->_adminModel->newEscape($data);
     	$this->_helper->redirector('viewescape');
     }
     
