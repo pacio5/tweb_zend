@@ -39,4 +39,11 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 		return $this->fetchAll($select);
 	}
 	
+	public function verifyFloor($building, $floor){
+		$select = $this->select()->where('building_code = ? AND number = ?', $building, $floor);
+		if($this->fetchAll($select))
+			return true;
+		return false;
+	}
+	
 }

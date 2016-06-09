@@ -230,6 +230,22 @@ class AdminController extends Zend_Controller_Action
 		
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
+	
+	
+	public function validatefloorAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		
+		$floor = (int)$this->_getParam('floor');
+		$building = (int)$this->_getParam('building');
+		
+		if($this->_adminModel->verifyFloor($building, $floor))
+			$res = true;
+		else $res = false;
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
     
     /**** End Floor ****/
     

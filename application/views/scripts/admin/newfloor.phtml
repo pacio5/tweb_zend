@@ -1,6 +1,7 @@
-<script>
+<?php $this->headScript()->captureStart()?>
 	$(function(){
 		$('#building_code').change(function(event){
+			$('#alert_error').remove();
 			$.ajax({
 					type: 'POST',
 					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'completefloor'), 'default'); ?>',
@@ -22,7 +23,28 @@
 		};
 		
 	}
-</script>
+
+	$(function(){
+		$('#number').change(function(event){
+			$('#alert_error').remove();
+			$('#add').prop("disabled",false);	
+			$.ajax({
+				type: 'POST',
+				url: '<?= $this->url(array('controller' => 'admin', 'action' => 'validatefloor'), 'default');?>',
+				data: "floor="+$('#number').text() + "&building="+$('#building_code').val(),
+				datatype: 'json',
+				success: validateFloor
+			});
+		});			
+	});
+
+	function validateFloor(data){
+		if(!data['result']){
+			$('#titolo').append('<p id="alert_error" class="alert h1">Piano già esistente, usare il form di modifica o crearne uno nuovo</p>');
+			$('#add').prop("disabled",true);
+		}
+	}
+<?php $this->headScript()->captureEnd()?>
 
 
 <div class="row">
