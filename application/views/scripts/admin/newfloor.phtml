@@ -19,7 +19,7 @@
         var floor = parseInt(data['floor_number']);
         $('#number').append("<option>--Select--</option>");
 		for(var i=0; i<floor; i++){
-			$('#number').append("<option>" + i + "</option>");
+			$('#number').append('<option>' + i + '</option>');
 		};
 		
 	}
@@ -31,7 +31,7 @@
 			$.ajax({
 				type: 'POST',
 				url: '<?= $this->url(array('controller' => 'admin', 'action' => 'validatefloor'), 'default');?>',
-				data: "floor="+$('#number').text() + "&building="+$('#building_code').val(),
+				data: "floor="+$('#number').val() + "&building="+$('#building_code').val(),
 				datatype: 'json',
 				success: validateFloor
 			});
@@ -39,7 +39,7 @@
 	});
 
 	function validateFloor(data){
-		if(!data['result']){
+		if(data == true){
 			$('#titolo').append('<p id="alert_error" class="alert h1">Piano già esistente, usare il form di modifica o crearne uno nuovo</p>');
 			$('#add').prop("disabled",true);
 		}

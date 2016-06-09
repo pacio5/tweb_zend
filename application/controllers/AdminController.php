@@ -199,11 +199,10 @@ class AdminController extends Zend_Controller_Action
 		
 		$floor = (int)$this->_getParam('floor');
 		$building = (int)$this->_getParam('building');
-		
-		if($this->_adminModel->verifyFloor($building, $floor))
+		$res = $this->_adminModel->verifyFloor($building, $floor);
+		if(count($res) > 0)
 			$res = true;
 		else $res = false;
-		
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
 	
