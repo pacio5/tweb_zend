@@ -148,9 +148,9 @@ class AdminController extends Zend_Controller_Action
     }
     
     public function modifyfloorAction(){
-    	$this->view->modifyfloorForm = $this->modifyFloorForm();
+    	$this->view->modifyFloorForm = $this->modifyFloorForm();
     	$code = $this->_getParam('code');
-    	$floor = $this->_adminModel->getFloorByCode($code);
+    	$floor = $this->_adminModel->getFloorByCode($code)->toArray();
     	$form = $this->_form;
     	$form->populate($floor);
     } 
@@ -170,6 +170,9 @@ class AdminController extends Zend_Controller_Action
     	}
     	
     	$values = $form->getValues();
+		$this->view->assign(array(
+   				'building' => $value['building_code'],
+				'number' => $value['number']));
     	$this->_adminModel->updateFloor($values, $code);
     	$this->_helper->redirector('viewfloor');
     }
@@ -208,8 +211,7 @@ class AdminController extends Zend_Controller_Action
     
     private function modifyFloorForm(){
     	$urlHelper = $this->_helper->getHelper('url');
-    	$this->_form = new Application_Form_Admin_Floor_Add();
-    	$this->_form-> setName('updateFloor');
+    	$this->_form = new Application_Form_Admin_Floor_Modify();
     	$this->_form->setAction($urlHelper->url(array(
     			'controller' => 'admin',
     			'action' => 'updatefloor'),
