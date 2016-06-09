@@ -36,11 +36,8 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 				'cols' => 50,
 				'rows' => 10,
 				'required' => true,
-				'filters' => array (
-						'StringTrim' 
-				),
-				'validators' => array (
-						array ('StringLength', true, array ( 1, 150 ) ) ) ,
+				'filters' => array ('StringTrim'),
+				'validators' => array (array ('StringLength', true, array ( 1, 150 ) ) ) ,
 				'decorators' => $this->elementDecorators,
 		) );
 		

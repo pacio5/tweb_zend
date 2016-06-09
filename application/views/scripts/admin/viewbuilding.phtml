@@ -14,9 +14,10 @@
 								<th><i class="fa fa-trash-o"></i></th>
 								<th><i class="fa fa-file-o"></i></th>
 								<th>Edificio</th>
-								<th>Address</th>
-								<th>Floor Number</th>
-								<th>Description</th>
+								<th>Indirizzo</th>
+								<th>Piani</th>
+								<th>Descrizione</th>
+								<th>Responsabile</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -38,6 +39,7 @@
 								<td><?= $building->address;?></td>
 								<td><?= $building->floor_number;?></td>
 								<td><?= $building->desc_short;?></td>
+								<td><?= $building->staff_code;?></td>
 							</tr>
 						<?php endforeach; ?>
 						</tbody>
