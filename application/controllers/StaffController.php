@@ -62,4 +62,9 @@ class StaffController extends Zend_Controller_Action
 	}
 	
 	/**** End Profile ****/
+	/**** Associate, associazione zona-fuga ****/
+	
+	public function associateAction(){
+		
+	}
 }

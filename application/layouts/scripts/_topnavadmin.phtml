@@ -97,10 +97,14 @@
 					'default', true); ?>">Modifica / Cancella</a></li>
 			</ul></li>
 		<?php else: ?>
-		<li><a href="<?= $this->url(array(
+			<li><a href="<?= $this->url(array(
 					'controller' => 'staff',
 					'action' => 'index'),
 					'default', true); ?>"><i class="fa fa-fw fa-dashboard"></i> Bacheca</a></li>
+			<li><a href="<?= $this->url(array(
+					'controller' => 'staff',
+					'action' => 'associate'),
+					'default', true); ?>"><i class="fa fa-fw fa-map-o"></i> Associazione Zona - Fuga</a></li>
 		<?php endif; ?>
 	</ul>
 </div>
