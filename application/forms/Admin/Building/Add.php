@@ -31,8 +31,9 @@ class Application_Form_Admin_Building_Add extends App_Form_Abstract {
 				'decorators' => $this->elementDecorators,
 		) );
 		
-		$this->addElement ( 'text', 'desc_short', array (
+		$this->addElement ( 'textarea', 'desc_short', array (
 				'label' => 'Descrizione Breve',
+				'cols'=> '50', 'rows'=>'10',
 				'required' => true,
 				'filters' => array (
 						'StringTrim' 
