@@ -15,31 +15,29 @@
 								<th><i class="fa fa-file-o"></i></th>
 								<th>Edificio</th>
 								<th>Numero Piano</th>
-								<th>Numero Zone</th>
+								<th>Numero Zona</th>
 								<th>Via Di Fuga</th>
 							</tr>
 						</thead>
 						<tbody>
-<?php
-
-foreach ( $this->escape_map as $escape_map ) {
-	foreach ( $this->zone as $zone ) {
-		foreach ( $this->floor as $floor ) {
-			foreach ( $this->building as $building ) {
-				
-				if ($zone->code == $escape_map->zone_code) {
-					?>
+						<?php foreach ( $this->escape_map as $escape_map ) {?>
 							<tr>
-								<td><a
-									href="<?=$this->url ( array ('controller' => 'admin','action' => 'deleteescape_map','code' => $escape_map->code ), 'default', true );?>"><i class="fa fa-times"></i></a></td>
-								<td><a
-									href="<?=$this->url ( array ('controller' => 'admin','action' => 'modifyescape_map','code' => $escape_map->code ), 'default', true );?>"><i class="fa fa-pencil-square-o"></i></a></td>
-								<td><?= $building->name;?></td>
-								<td><?= $floor->number;?></td>
-								<td><?= $floor->zone_number;?></td>
+								<td><a href="<?=$this->url ( array (
+											'controller' => 'admin',
+											'action' => 'deleteescape_map',
+											'code' => $escape_map->code ), 
+											'default', true );?>"><i class="fa fa-times"></i></a></td>
+								<td><a href="<?=$this->url ( array ('controller' => 'admin',
+											'action' => 'modifyescape_map',
+											'code' => $escape_map->code ), 
+											'default', true );?>"><i class="fa fa-pencil-square-o"></i></a></td>
+								<td></td>
+								<td></td>
+								<td><?= $escape_map->zone_code;?></td>
 								<td><?= $escape_map->image;?></td>
 							</tr>
-						<?php }; }; };};}; ?>
+							
+							<?php }; ?>
 						</tbody>
 					</table>
 				</div>
@@ -47,6 +45,5 @@ foreach ( $this->escape_map as $escape_map ) {
 				<div class="text-center"></div>
 			</div>
 		</div>
-
 	</div>
 </div>

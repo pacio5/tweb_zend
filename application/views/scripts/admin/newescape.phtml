@@ -1,6 +1,6 @@
 <script>
 	$(function(){
-		$('#zone_code').change(function(event){
+		$('#building_code').change(function(event){
 			$.ajax({
 					type: 'POST',
 					url: '<?= $this->url(array('controller' => 'admin', 'action' => 'completeescape_map'), 'default'); ?>',
@@ -29,9 +29,8 @@
 	<div class="col-sm-12">
 		<hgroup id="titolo">
 			<h2 class="text-center">Nuova Via di Fuga</h2>
-			<h4 class="text-center">Utilizza questa form per inserire una nuova
-				via di fuga per una Zona</h4>
+			<h4 class="text-center">Utilizza questa form per inserire una nuova via di fuga per una Zona</h4>
 		</hgroup>
-		<?= $this->floorForm; ?>
+		<?= $this->escapeForm; ?>
 	</div>
 </div>
