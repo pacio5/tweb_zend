@@ -17,7 +17,7 @@
 		$('#number').find('option').remove();
 		
         var floor = parseInt(data['floor_number']);
-        
+        $('#number').append("<option>--Select--</option>");
 		for(var i=0; i<floor; i++){
 			$('#number').append("<option>" + i + "</option>");
 		};
