@@ -13,6 +13,10 @@
 					<p class="h3">Ruolo</p>
 					<p class="h5"><?= strtoupper($this->authInfo('role'));?></p>
 				</div>
+				<div class="col-sm-3 mail">
+					<p class="h3">Email</p>
+					<p class="h5"><?= $this->authInfo('mail');?></p>
+				</div>
 				<div class="col-sm-3 password">
 					<a href="<?= $this->url(array(
 					'controller' => 'user',
