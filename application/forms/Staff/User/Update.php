@@ -29,6 +29,14 @@ class Application_Form_Staff_User_Update extends App_Form_Abstract {
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 30 ) ) ) ,
 		) );
+		
+		$this->addElement ( 'text', 'mail', array (
+				'label'  	 => 'Email',
+				'required' 	 => true,
+				'filters'    => array('StringTrim'),
+				'validators' => array(
+						array('StringLength', true, array(5, 50))),
+		) );
 
 		$this->addElement ( 'password', 'password', array (
 				'label'  	 => 'Password (min. 3 caratteri)',
