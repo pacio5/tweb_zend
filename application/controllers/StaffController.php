@@ -14,11 +14,21 @@ class StaffController extends Zend_Controller_Action
 	}
 	
 	public function indexAction(){
+		$data = array();
 		// Recupera le segnalazioni dal database
    		$alert = $this->_staffModel->viewAlert();
+   		foreach($alert as $val){
+   			$code = $val->zone_code;
+   			$res = $this->_staffModel->getZoneByCode($code);
+   			$code = $res['floor_code'];
+   			$res = $this->_staffModel->getFloorByCode($code);
+   			$code = $res['building_code'];
+   			$res = $this->_staffModel->getBuildingByCode($code);
+   			if($res['staff_code'] == $this->_authService->getIdentity()->user || $res['staff_code'] === NULL)
+   				array_push($data,$val);
+   		}
    		// Passo alla view gli edifici
-   		$this->view->assign(array(
-   				'alert' => $alert));
+   		$this->view->assign(array('alert' => $data));
 	}
 	
 	public function logoutAction()
