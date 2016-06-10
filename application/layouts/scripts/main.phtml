@@ -29,8 +29,19 @@
 	
 	</nav>
 	<div class="img-principale hidden-xs">
+	<?php	if($this->evacuare) : ?>
+		<p class="text-center h1 allarme">
+			<i class="fa fa-exclamation-triangle" ></i>
+			Evacuare la zona, visualizza la <a href="<?= $this->url(array(
+					'controller' => 'user',
+					'action' => 'escape'),
+					'default', true); ?>">mappa</a>
+		</p>
+	
+	<?php else :?>
 		<img src="<?= $this->baseUrl('css/images/blueprint.png'); ?>"
 			class="img-responsive" alt="" title="" />
+	<?php endif; ?>
 	</div>
 	<div class="container">
 		<?php echo $this->layout()->content; ?>

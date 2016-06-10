@@ -80,4 +80,9 @@ class Application_Model_User extends App_Model_Abstract {
 		return $this->getResource('Alert')->addAlert($info);
 	}
 	
+	/**** Fine Segnala Pericolo ****/
+	public function verifyAlert($position){
+		return $this->getResource('Alert')->verifyAlert($position);
+	}
+	
 }

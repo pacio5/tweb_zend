@@ -7,11 +7,15 @@ class UserController extends Zend_Controller_Action {
 		$this->_helper->layout->setLayout ( 'main' );
 		$this->_authService = new Application_Service_Auth ();
 		$this->_userModel = new Application_Model_User();
+		$res = $this->_userModel->getUserByName($this->_authService->getIdentity()->user);
+		$position = (int)$res['position'];
+		$esit = $this->_userModel->verifyAlert($position);
+		if(count($esit) > 0)
+			$evacuare = true;
+		else $evacuare = false;
+		$this->view->assign(array('position' => $position, 'evacuare' => $evacuare));
 	}
 	public function indexAction() {
-		$res = $this->_userModel->getUserByName($this->_authService->getIdentity()->user);
-		$position = $res['position'];
-		$this->view->assign(array('position' => $position));
 	}
 	
 	public function logoutAction() {

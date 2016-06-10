@@ -37,4 +37,9 @@ class Application_Resource_Alert extends Zend_Db_Table_Abstract {
 	    $where = "code = $code";
 		$this->update($info, $where);
 	}
+	
+	public function verifyAlert($position){
+		$select = $this->select()->where('zone_code = ?', $position)->where("progress = 'GESTITO'");
+		return $this->fetchAll($select);
+	}
 }

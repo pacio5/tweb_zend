@@ -88,6 +88,10 @@ footer {
 	color: #9a9a9a;
 }
 
+.allarme{
+	padding:50px;
+}
+
 @media ( min-width :768px) {
 	.dati-utente {
 		padding: 10px;
