@@ -1,3 +1,14 @@
+<?php 	$url = $this->baseUrl('/images/escape/');
+		$this->headScript()->captureStart()?>
+$(function(){
+		$('#image').change(function(event){
+					$('#image_escape').find('img').remove();
+					var image = $('#image :selected').text();
+				    $('#image_escape').append('<img src="<?= $url?>' + image + '" width="400"/>'); 
+		});
+	});
+<?php $this->headScript()->captureEnd()?>
+
 <div class="row">
 	<div class="col-sm-12">
 		<hgroup id="titolo">
@@ -5,6 +16,11 @@
 			<h4 class="text-center">Utilizza questa form per inserire una nuova via di fuga
 				edificio</h4>
 		</hgroup>
+		</div>
+	<div class="col-sm-4">
 		<?= $this->modifyMapForm; ?>
+	</div>
+	<div id="image_escape" class="col-sm-8">
+		
 	</div>
 </div>

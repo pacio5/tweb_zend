@@ -73,6 +73,7 @@
 	
 	$(function(){
 		$('#escape_map').change(function(event){
+					$('#image_escape').find('img').remove();
 					var image = $('#escape_map :selected').text();
 				    $('#image_escape').append('<img src="<?= $url?>' + image + '" width="400"/>'); 
 		});
