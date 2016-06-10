@@ -30,6 +30,18 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Building')->getBuildingByCode($info);
 	}
 	
+	public function associateBuilding($info, $code){
+		return $this->getResource('Building')->associateBuilding($info, $code);
+	}
+	
+	public function viewBuildingUnAssociate(){
+		return $this->getResource('Building')->viewBuildingUnAssociate();
+	}
+	
+	public function deleteAssociationBuilding($code){
+		return $this->getResource('Building')->deleteAssociationBuilding($code);
+	}
+	
 	/**** Fine Edifici ****/
 	
 	

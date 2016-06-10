@@ -118,6 +118,55 @@ class AdminController extends Zend_Controller_Action
     	return $this->_form;
     }
     
+    
+    public function associatebuildingAction(){
+    	$this->view->associateBuildingForm = $this->associateBuildingForm();
+    }
+    
+    private function associateBuildingForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Admin_Building_Associate();
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'admin',
+    			'action' => 'associate'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
+    
+    public function associateAction(){
+    	$this->view->associateBuildingForm = $this->associateBuildingForm();
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	 
+    	$form = $this->_form;
+    	 
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('associatebuilding');
+    	}
+    	 
+    	$values = $form->getValues();
+    	
+    	$staff_code =array('staff_code' => $values['staff_code']);
+    	
+    	$building = $values['building_code'];
+    	
+    	$i = 0;
+    	while($building[$i]!=NULL){
+    		$this->_adminModel->associateBuilding($staff_code, $building[$i++]);
+    	}
+    	
+    	$this->_helper->redirector('viewbuilding');
+    }
+    
+    public function deleteassociationAction(){
+    	$code = $this->_getParam('code');
+    	$result = $this->_adminModel->deleteAssociationBuilding($code);
+    	$this->_helper->redirector('viewbuilding');
+    }
+    
     /**** End Building ****/
     
     
