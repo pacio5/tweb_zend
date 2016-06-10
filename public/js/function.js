@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
 	// Intercetto lo scroll di pagina
 	$(window).scroll(function() {
 		if ($(this).scrollTop() > 600) {
