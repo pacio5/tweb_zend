@@ -12,7 +12,6 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 				'filters' => array ('StringTrim'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 1, 30 ) ) ),
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'text', 'name', array (
@@ -21,7 +20,6 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 				'required' => true,
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 30 ) ) ) ,
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'text', 'surname', array (
@@ -30,7 +28,6 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 				'required' => true ,
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 30 ) ) ) ,
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'password', 'password', array (
@@ -39,7 +36,6 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 				'filters'    => array('StringTrim'),
 				'validators' => array(
 						array('StringLength', true, array(3, 25))),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'text', 'mail', array (
@@ -47,19 +43,10 @@ class Application_Form_Admin_User_Add extends App_Form_Abstract {
 				'filters' => array ('StringTrim'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 5, 50 ) ) ),
-				'decorators' => $this->elementDecorators,
 		) );
 
 
 		$this->addElement ( 'submit', 'registration', array (
-				'label' => 'Registra',
-				'decorators' => $this->elementDecorators  ));
-
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Registra', ));
 	}
 }

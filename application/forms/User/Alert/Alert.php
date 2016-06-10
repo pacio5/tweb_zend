@@ -23,38 +23,26 @@ class Application_Form_User_Alert_Alert extends App_Form_Abstract {
 				'label' => 'Edificio',
 				'required' => true,
 				'multiOptions' => $building,
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'select', 'floor_number', array (
 				'label' => 'Numero Piano',
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'select', 'zone_number', array (
 				'label' => 'Numero Zona',
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'select', 'alert', array (
 				'label' => 'Tipo Pericolo',
 				'multiOptions' => $alert,
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'submit', 'register', array (
-				'label' => 'Registra',
-				'decorators' => $this->elementDecorators  ));
-		
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Registra',  ));
 	}
 }

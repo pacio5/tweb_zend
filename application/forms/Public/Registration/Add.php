@@ -11,7 +11,6 @@ class Application_Form_Public_Registration_Add extends App_Form_Abstract {
 				'filters' => array ('StringTrim', 'StringToLower'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 1, 30 ) ) ),
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'text', 'name', array (
@@ -20,7 +19,6 @@ class Application_Form_Public_Registration_Add extends App_Form_Abstract {
 				'required' => true,
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 30 ) ) ) ,
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'text', 'surname', array (
@@ -29,7 +27,6 @@ class Application_Form_Public_Registration_Add extends App_Form_Abstract {
 				'required' => true ,
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 30 ) ) ) ,
-				'decorators' => $this->elementDecorators,
 		) );
 		$this->addElement ( 'password', 'password', array (
 				'label'  	 => 'Password (min. 3 caratteri)',
@@ -37,7 +34,6 @@ class Application_Form_Public_Registration_Add extends App_Form_Abstract {
 				'filters'    => array('StringTrim'),
 				'validators' => array(
 						array('StringLength', true, array(3, 25))),
-				'decorators' => $this->elementDecorators,
 		) );
 		$this->addElement ( 'text', 'mail', array (
 				'label'  	 => 'Email',
@@ -45,20 +41,11 @@ class Application_Form_Public_Registration_Add extends App_Form_Abstract {
 				'filters'    => array('StringTrim'),
 				'validators' => array(
 						array('StringLength', true, array(5, 50))),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 
 
 		$this->addElement ( 'submit', 'registration', array (
-				'label' => 'Registrati',
-				'decorators' => $this->elementDecorators  ));
-
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Registrati', ));
 	}
 }

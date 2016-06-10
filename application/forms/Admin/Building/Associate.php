@@ -20,7 +20,6 @@ class Application_Form_Admin_Building_Associate extends App_Form_Abstract {
 				'label' => 'Edificio',
 				'required' => true,
 				'multiOptions' => $select,
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		
@@ -36,20 +35,11 @@ class Application_Form_Admin_Building_Associate extends App_Form_Abstract {
 				'label' => 'Edificio',
 				'required' => true,
 				'multiOptions' => $building,
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		
 		$this->addElement ( 'submit', 'associate', array (
-				'label' => 'Associa',
-				'decorators' => $this->elementDecorators  ));
-		
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Associa', ));
 		
 	}
 	

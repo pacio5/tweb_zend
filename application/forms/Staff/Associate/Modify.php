@@ -21,19 +21,10 @@ class Application_Form_Staff_Associate_Modify extends App_Form_Abstract {
 				'label' => 'Vie di Fuga',
 				'required' => true,
 				'multiOptions' => $images,
-				'decorators' => $this->elementDecorators,
 		) );
 	
 		
 		$this->addElement ( 'submit', 'register', array (
-				'label' => 'Registra',
-				'decorators' => $this->elementDecorators,  ));
-	
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Registra',  ));
 	}
 }

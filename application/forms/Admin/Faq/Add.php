@@ -12,7 +12,6 @@ class Application_Form_Admin_Faq_Add extends App_Form_Abstract {
 				'filters' => array ('StringTrim'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 1, 200 ) ) ),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'textarea', 'answer', array (
@@ -22,18 +21,9 @@ class Application_Form_Admin_Faq_Add extends App_Form_Abstract {
 				'required' => true ,
 				'validators' => array (
 						array ('StringLength', true, array ( 1, 2500 ) ) ) ,
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'submit', 'add', array ( 
-				'label' => 'Aggiungi',
-				'decorators' => $this->elementDecorators  ));
-		
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Aggiungi', ));
 	}
 }

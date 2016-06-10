@@ -21,7 +21,6 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 				'label' => 'Edificio',
 				'required' => true,
 				'multiOptions' => $building,
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'select', 'number', array (
@@ -29,7 +28,6 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 				'required' => true,
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'text', 'zone_number', array (
@@ -48,18 +46,10 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 						array ( 'Size', false, 10000000 ),
 						array ( 'Extension', false, array ( 'jpg', 'gif', 'png' ) 
 						) 
-				) , 'decorators' => $this->elementDecorators,
+				) ,
 		) );
 		
 		$this->addElement ( 'submit', 'add', array ( 
-				'label' => 'Aggiungi Planimetria',
-				'decorators' => $this->elementDecorators  ));
-		
-		$this->setDecorators(array(
-				'FormElements',
-				array('HtmlTag', array('tag' => 'table')),
-				array('Description', array('placement' => 'prepend', 'class' => 'formerror')),
-				'Form'
-		));
+				'label' => 'Aggiungi Planimetria', ));
 	}
 }
