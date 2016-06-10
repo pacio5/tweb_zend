@@ -143,7 +143,24 @@ class AdminController extends Zend_Controller_Action
     	}
     	
     	$values = $form->getValues();
+    	// Recupero il piano tramite l'edificio e il numero piano, per estrarre il codice per creare le zone
+    	$building = $values['building_code'];
+    	$floor = $values['number'];
     	$this->_adminModel->newFloor($values);
+    	
+    	$res = $this->_adminModel->verifyFloor($building, $floor );
+    	// Creo automaticamente le zone
+    	$zone = $values['zone_number'];
+    	
+    	
+    	for($i = 1; $i <= $zone; $i++){
+    		$data = array('floor_code' => $res['code'], 'number' => $i );
+    		$this->_adminModel->newZone($data);
+    	}
+    	
+    	
+    	
+    	
     	$this->_helper->redirector('viewfloor');
     }
     
