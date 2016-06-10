@@ -65,6 +65,81 @@ class StaffController extends Zend_Controller_Action
 	/**** Associate, associazione zona-fuga ****/
 	
 	public function associateAction(){
+		$this->view->associateForm = $this->getAssociateForm();
+	}
+	
+	private function getAssociateForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Staff_Associate_Add();
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'staff',
+    			'action' => 'addassociate'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
+
+	public function addassociateAction(){
+    	$this->view->associateForm = $this->getAssociateForm();
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	
+    	$form = $this->_form;
+    	
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('associate');
+    	}
+    	
+    	$values = $form->getValues();
+		$data = array('escape_map' => $values['escape_map']);
+    	$this->_staffModel->newAssociate($data, (int)$values['zone_number']);
+    	$this->_helper->redirector('index');
+    }
+	
+	public function floornumberAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
 		
+		$param = (int)$this->_getParam('code');
+		
+		$res = $this->_staffModel->getBuildingFloor($param);
+		
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
+	
+	public function zonenumberAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		$param = (int)$this->_getParam('code');
+		
+		$res = $this->_staffModel->getFloorZone($param)->toArray();
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
+
+	public function escapemapAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		$param = (int)$this->_getParam('code');
+		
+		$res = $this->_staffModel->getEscapeMap($param);
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
+	}
+	
+	public function onlyescapemapAction(){
+		$this->_helper->getHelper('layout')->disableLayout();
+		$this->_helper->viewRenderer->setNoRender();
+		
+		$param = (int)$this->_getParam('code');
+		
+		$res = $this->_staffModel->getOnlyEscapeMap($param);
+		
+		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
 }

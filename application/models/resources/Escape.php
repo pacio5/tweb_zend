@@ -32,4 +32,14 @@ class Application_Resource_Escape extends Zend_Db_Table_Abstract {
 	public function insertEscape($info) {
 		$this->insert ( $info );
 	}
+	
+	public function getEscapeByZoneCode($info){
+		$select = $this->select ()->where('zone_code = ?', $info);
+		return $this->fetchAll( $select )->toArray();
+	}
+	
+	public function getOnlyEscapeByZoneCode($info){
+		$select = $this->select ()->where('zone_code = ?', $info);
+		return $this->fetchRow( $select )->toArray();
+	}
 }

@@ -44,4 +44,9 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 		$select = $this->select()->where('code = ?', $info);
 		return $this->fetchRow($select);
 	}
+	
+	public function associateEscape($info, $code){
+		$where = "code = $code";
+		$this->update($info, $where);
+	}
 }

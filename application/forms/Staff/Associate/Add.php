@@ -1,6 +1,7 @@
 <?php
 class Application_Form_Staff_Associate_Add extends App_Form_Abstract {
-	protected $_userModel;
+		
+	protected $_staffModel;
 	
 	public function init() {
 		$this->setMethod ( 'post' );
@@ -11,8 +12,8 @@ class Application_Form_Staff_Associate_Add extends App_Form_Abstract {
 		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
 		$building = array();
 		$building['unselected'] = " -- Select --";
-		$this->_userModel = new Application_Model_User();
-		$build = $this->_userModel->viewBuilding();
+		$this->_staffModel = new Application_Model_Staff();
+		$build = $this->_staffModel->viewBuilding();
 		foreach ($build as $bui) {
 			$building[$bui -> code] = $bui->name;
 		}
@@ -36,12 +37,16 @@ class Application_Form_Staff_Associate_Add extends App_Form_Abstract {
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
-	
-		
+
+		$this->addElement ('select', 'escape_map', array(
+		        'label' => 'Planimetrie',
+		        'registerInArrayValidator' => false,
+		        'decorators' => $this->elementDecorators,
+				));
 		
 		$this->addElement ( 'submit', 'register', array (
 				'label' => 'Registra',
-				'decorators' => $this->elementDecorators  ));
+				'decorators' => $this->elementDecorators,  ));
 	
 		$this->setDecorators(array(
 				'FormElements',
