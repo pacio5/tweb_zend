@@ -15,7 +15,9 @@ class AdminController extends Zend_Controller_Action
     }
 
     public function indexAction(){
-    	
+    	$alert = $this->_adminModel->viewAlert();
+    	// Passo alla view gli edifici
+    	$this->view->assign(array('alert' => $alert));
     }
     
     // Action per effettuare il logout

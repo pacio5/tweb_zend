@@ -204,5 +204,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	}
 	
 	/**** Fine F.A.Q ****/
+	/**** Alert ****/
+	public function viewAlert()
+	{
+		return $this->getResource('Alert')->getAlert();
+	}
 
 }
