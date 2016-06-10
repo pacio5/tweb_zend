@@ -17,17 +17,6 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 		return $this->fetchRow( $select )->toArray();
 	}
 	
-	// Cancella zona dal db
-	public function deleteZone($code) {
-		$where = "code = $code";
-		return $this->delete($where);
-	}
-	// Aggiorna dati zona
-	public function updateZone($info, $code){
-		$where = "code = $code";
-		$this->update($info, $where);
-	}
-	
 	// inserisce una nuova zona
 	public function insertZone($info) {
 		$this->insert ( $info );
@@ -50,8 +39,13 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 		$this->update($info, $where);
 	}
 	
+
 	public function changeMap($info, $code){
 		$where = "code = $code";
 		$this->update($info, $where);
+	}
+	public function deleteZoneByFloor($code){
+		$where = "floor_code = $code";
+		$this->delete($where);
 	}
 }

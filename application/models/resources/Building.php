@@ -38,5 +38,22 @@ class Application_Resource_Building extends Zend_Db_Table_Abstract {
 		$select = $this->select ()->where("code = ?", $info);
 		return $this->fetchRow( $select );
 	}
+	
+	// Associata staff code all'utente
+	public function associateBuilding($info, $code){
+		$where = "code = $code";
+		$this->update($info, $where);
+	}
+	
+	// Prende tutti gli edifici che non sono stati associati
+	public function viewBuildingUnAssociate(){
+		$select = $this->select()->where("staff_code IS NULL");
+		return $this->fetchAll($select);
+	}
+	
+	public function deleteAssociationBuilding($code){
+		$where = "code = $code";
+		$this->update(array('staff_code' => NULL), $where);
+	}
 }
 

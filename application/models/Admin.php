@@ -30,6 +30,18 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Building')->getBuildingByCode($info);
 	}
 	
+	public function associateBuilding($info, $code){
+		return $this->getResource('Building')->associateBuilding($info, $code);
+	}
+	
+	public function viewBuildingUnAssociate(){
+		return $this->getResource('Building')->viewBuildingUnAssociate();
+	}
+	
+	public function deleteAssociationBuilding($code){
+		return $this->getResource('Building')->deleteAssociationBuilding($code);
+	}
+	
 	/**** Fine Edifici ****/
 	
 	
@@ -79,19 +91,9 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Zone')->insertZone($info);
 	}
 	
-	public function deleteZone($info)
-	{
-		return $this->getResource('Zone')->deleteZone($info);
-	}
-	
 	public function viewZone()
 	{
 		return $this->getResource('Zone')->getZone();
-	}
-	
-	public function updateZone($info, $code)
-	{
-		return $this->getResource('Zone')->updateZone($info, $code);
 	}
 	
 	public function getZoneByCode($info){
@@ -100,6 +102,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function getFloorZone($info){
 		return $this->getResource('Zone')->getFloorZone($info);
+	}
+	
+	public function deleteZoneByFloor($code){
+		return $this->getResource('Zone')->deleteZoneByFloor($code);
 	}
 
 	/**** Fine Zone ****/
@@ -111,25 +117,18 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Escape')->insertEscape($info);
 	}
 	
-	public function deleteEscape($info)
-	{
-		return $this->getResource('Escape')->deleteEscape($info);
-	}
-	
 	public function viewEscape()
 	{
 		return $this->getResource('Escape')->getEscape();
 	}
 	
-	public function updateEscape($info, $code)
-	{
-		return $this->getResource('Escape')->updateEscape($info, $code);
-	}
-	
 	public function getEscapeByCode($info){
 		return $this->getResource('Escape')->getEscapeByCode($info);
 	}
-
+	
+	public function deleteEscapeByZone($code){
+		return $this->getResource('Escape')->deleteEscapeByZone($code);
+	}
 	/**** Fine Vie di Fuga ****/
 
 

@@ -17,17 +17,6 @@ class Application_Resource_Escape extends Zend_Db_Table_Abstract {
 		return $this->fetchRow( $select )->toArray();
 	}
 	
-	// Cancella via di fuga dal db
-	public function deleteEscape($code) {
-		$where = "code = $code";
-		return $this->delete($where);
-	}
-	// Aggiorna dati via di fuga
-	public function updateEscape($info, $code){
-		$where = "code = $code";
-		$this->update($info, $where);
-	}
-	
 	// inserisce una nuova via di fuga
 	public function insertEscape($info) {
 		$this->insert ( $info );
@@ -41,5 +30,10 @@ class Application_Resource_Escape extends Zend_Db_Table_Abstract {
 	public function getOnlyEscapeByZoneCode($info){
 		$select = $this->select ()->where('zone_code = ?', $info);
 		return $this->fetchRow( $select )->toArray();
+	}
+	
+	public function deleteEscapeByZone($code){
+		$where = "zone_code = $code";
+		$this->delete($where);
 	}
 }

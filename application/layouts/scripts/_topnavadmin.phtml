@@ -35,6 +35,10 @@
 					'controller' => 'admin',
 					'action' => 'viewbuilding'),
 					'default', true); ?>">Modifica / Cancella</a></li>
+					<li><a href="<?= $this->url(array(
+					'controller' => 'admin',
+					'action' => 'associatebuilding'),
+					'default', true); ?>">Associa Responsabile</a></li>
 			</ul></li>
 		<li><a href="javascript:;" data-toggle="collapse" data-target="#floor"><i
 				class="fa fa-map-o" aria-hidden="true"></i> Gestione Planimetrie <i
@@ -55,7 +59,7 @@
 				<li><a href=" <?= $this->url(array(
 				    'controller'=> 'admin',
 				    'action' => 'viewescape'),
-				    'default', true); ?>">Modifica / Cancella Uscita</a></li>
+				    'default', true); ?>">Visualizza / Cancella Uscita</a></li>
 			</ul></li>
 		<li><a href="javascript:;" data-toggle="collapse" data-target="#staff"><i
 				class="fa fa-fw fa-users"></i> Gestione Staff <i

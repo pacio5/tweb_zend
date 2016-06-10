@@ -11,6 +11,7 @@
 					<table class="table table-bordered table-hover table-striped">
 						<thead>
 							<tr>
+								<th><i class="fa fa-user"></i></th>
 								<th><i class="fa fa-trash-o"></i></th>
 								<th><i class="fa fa-file-o"></i></th>
 								<th>Edificio</th>
@@ -23,6 +24,12 @@
 						<tbody>
 						<?php foreach ($this->building as $building) : ?>
 							<tr>
+								<td><a href="<?=$this->url(array(
+													'controller' => 'admin',
+													'action' => 'deleteassociation',
+													'code' => $building->code
+													), 
+													'default', true); ?>"><i class="fa fa-times"></i></a></td>
 								<td><a href="<?=$this->url(array(
 													'controller' => 'admin',
 													'action' => 'deletebuilding',
