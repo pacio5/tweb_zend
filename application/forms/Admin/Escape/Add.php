@@ -35,7 +35,6 @@ class Application_Form_Admin_Escape_Add extends App_Form_Abstract {
 				'required' => true,
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
 		) );
 
 
