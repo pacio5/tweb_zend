@@ -1,16 +1,16 @@
 <?php
-class Application_Form_Staff_Associate_Add extends App_Form_Abstract {
-		
+class Application_Form_Staff_Alert_Alert extends App_Form_Abstract {
+	
 	protected $_staffModel;
 	protected $_authService;
 	
 	public function init() {
 		$this->_authService = new Application_Service_Auth ();
 		$this->setMethod ( 'post' );
-		$this->setName ( 'associate' );
+		$this->setName ( 'registrer' );
 		$this->setAction ( '' );
 		$this->setAttrib ( 'enctype', 'multipart/form-data' );
-	
+
 		//Estraggo i nomi degli edifici dal model e li inserisco nella SELECT
 		$building = array();
 		$building['unselected'] = " -- Select --";
@@ -20,37 +20,39 @@ class Application_Form_Staff_Associate_Add extends App_Form_Abstract {
 		foreach ($build as $bui) {
 			$building[$bui -> code] = $bui->name;
 		}
+		
+		$alert = array("terremoto"=>"Terremoto", "incendio"=>"Incendio", "allagamento"=>"Allagamento");
 		$this->addElement ( 'select', 'building_code', array (
 				'label' => 'Edificio',
 				'required' => true,
 				'multiOptions' => $building,
 				'decorators' => $this->elementDecorators,
 		) );
-	
+		
 		$this->addElement ( 'select', 'floor_number', array (
 				'label' => 'Numero Piano',
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
-	
+		
 		$this->addElement ( 'select', 'zone_number', array (
 				'label' => 'Numero Zona',
 				'registerInArrayValidator' => false,
 				'validators' => array('Int'),
 				'decorators' => $this->elementDecorators,
 		) );
-
-		$this->addElement ('select', 'escape_map', array(
-		        'label' => 'Planimetrie',
-		        'registerInArrayValidator' => false,
-		        'decorators' => $this->elementDecorators,
-				));
+		
+		$this->addElement ( 'select', 'alert', array (
+				'label' => 'Tipo Pericolo',
+				'multiOptions' => $alert,
+				'decorators' => $this->elementDecorators,
+		) );
 		
 		$this->addElement ( 'submit', 'register', array (
 				'label' => 'Registra',
-				'decorators' => $this->elementDecorators,  ));
-	
+				'decorators' => $this->elementDecorators  ));
+		
 		$this->setDecorators(array(
 				'FormElements',
 				array('HtmlTag', array('tag' => 'table')),

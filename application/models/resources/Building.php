@@ -17,6 +17,11 @@ class Application_Resource_Building extends Zend_Db_Table_Abstract {
 		return $this->fetchRow( $select )->toArray();
 	}
 	
+	public function getBuildingByRole($info){
+		$select = $this->select ()->where ("staff_code = ?",$info)->orWhere ("staff_code IS NULL");
+		return $this->fetchAll ( $select );
+	}
+	
 	// Cancella edificio dal db
 	public function deleteBuilding($code) {
 		$where = "code = $code";

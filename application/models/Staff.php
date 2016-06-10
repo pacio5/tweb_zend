@@ -28,6 +28,10 @@ class Application_Model_Staff extends App_Model_Abstract
 		return $this->getResource('Building')->getBuilding();
 	}
 	
+	public function viewBuildingByRole($info){
+		return $this->getResource('Building')->getBuildingByRole($info);
+	}
+	
 	public function viewEscape()
 	{
 		return $this->getResource('Escape')->getEscape();
@@ -37,12 +41,20 @@ class Application_Model_Staff extends App_Model_Abstract
 		return $this->getResource('Floor')->getBuildingFloor($info);
 	}
 	
+	public function getBuildingByCode($info){
+		return $this->getResource('Building')->getBuildingByCode($info);
+	}
+	
 	public function getFloorByCode($info){
 		return $this->getResource('Floor')->getFloorByCode($info);
 	}
 	
 	public function getFloorZone($info){
 		return $this->getResource('Zone')->getFloorZone($info);
+	}
+	
+	public function getZoneByCode($info){
+		return $this->getResource('Zone')->getZoneByCode($info);
 	}
 	
 	//Estrae tutte le righe delle vie di fuga
@@ -87,6 +99,10 @@ class Application_Model_Staff extends App_Model_Abstract
 	public function viewNameMap()
 	{
 		return $this->getResource('Escape')->getEscape();
+	}
+	
+	public function addAlert($info){
+		return $this->getResource('Alert')->addAlert($info);
 	}
 	/**** Fine Segnalazioni ****/
 }

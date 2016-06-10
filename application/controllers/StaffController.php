@@ -204,6 +204,54 @@ class StaffController extends Zend_Controller_Action
 		$this->_staffModel->evacuation($progress, (int)$code);
     	$this->_helper->redirector('index');
 	}
+	
+	/**** Segnala pericolo ****/
+	public function alertAction() {
+		$this->view->alertForm = $this->getAlertForm ();
+	}
+	private function getAlertForm() {
+		$urlHelper = $this->_helper->getHelper ( 'url' );
+		$this->_form = new Application_Form_Staff_Alert_Alert ();
+		$this->_form->setAction ( $urlHelper->url ( array (
+				'controller' => 'staff',
+				'action' => 'addalert' 
+			 ), 'default' ) );
+		return $this->_form;
+	}
+	
+	public function addalertAction() {
+		$this->view->alertForm = $this->getAlertForm ();
+		
+		if(!$this->getRequest()->isPost()){
+			$this->_helper->redirector('index');
+		}
+			
+		$form = $this->_form;
+		if(!$form->isValid($_POST)){
+			$form->setDescription('Attenzione: dati inseriti errati');
+			return $this->render('alert');
+		}
+		
+		$values = $form->getValues();
+		
+		$building = $this->_staffModel->getBuildingByCode((int)$values['building_code']);
+		$floor = $this->_staffModel->getFloorByCode((int)$values['floor_number']);
+		$zone = $this->_staffModel->getZoneByCode((int)$values['zone_number']);
+		
+		$data = array(	'building' => $building['name'], 
+						'floor' => $floor['number'], 
+						'zone' => $zone['number'], 
+						'type' => $values['alert'],	
+						'user_code' => $this->_authService->getIdentity()->user,
+						'progress' => 'Non Gestito',
+						'zone_code' => $zone['code']
+		);
+		
+		$this->_staffModel->addAlert($data);
+		$this->_helper->redirector('index');
+		
+	}
+	/**** Fine segnala pericolo ****/
     
     /**** Fine Segnalazioni ****/
 }
