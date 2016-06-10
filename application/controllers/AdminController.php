@@ -157,10 +157,6 @@ class AdminController extends Zend_Controller_Action
     		$data = array('floor_code' => $res['code'], 'number' => $i );
     		$this->_adminModel->newZone($data);
     	}
-    	
-    	
-    	
-    	
     	$this->_helper->redirector('viewfloor');
     }
     
@@ -192,6 +188,14 @@ class AdminController extends Zend_Controller_Action
     
     public function deletefloorAction(){
     	$code = $this->_getParam('code');
+    	
+    	$zone = $this->_adminModel->getFloorZone($code);
+    	foreach ($zone as $zon) {
+    		$this->_adminModel->deleteEscapeByZone($zon->code);
+    	}
+    	
+    	$this->_adminModel->deleteZoneByFloor($code);
+    	
     	$result = $this->_adminModel->deleteFloor($code);
     	$this->_helper->redirector('viewfloor');
     }
