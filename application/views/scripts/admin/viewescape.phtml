@@ -3,7 +3,7 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<i class="fa fa-money fa-fw"></i> Gestione Planimetrie
+					<i class="fa fa-money fa-fw"></i> Vie di Fuga
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -12,9 +12,6 @@
 						<thead>
 							<tr>
 								<th><i class="fa fa-trash-o"></i></th>
-								<th><i class="fa fa-file-o"></i></th>
-								<th>Edificio</th>
-								<th>Numero Piano</th>
 								<th>Numero Zona</th>
 								<th>Via Di Fuga</th>
 							</tr>
@@ -27,12 +24,6 @@
 											'action' => 'deleteescape_map',
 											'code' => $escape_map->code ), 
 											'default', true );?>"><i class="fa fa-times"></i></a></td>
-								<td><a href="<?=$this->url ( array ('controller' => 'admin',
-											'action' => 'modifyescape_map',
-											'code' => $escape_map->code ), 
-											'default', true );?>"><i class="fa fa-pencil-square-o"></i></a></td>
-								<td></td>
-								<td></td>
 								<td><?= $escape_map->zone_code;?></td>
 								<td><?= $escape_map->image;?></td>
 							</tr>
