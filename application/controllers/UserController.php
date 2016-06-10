@@ -92,7 +92,7 @@ class UserController extends Zend_Controller_Action {
 	/**** Visualizza Via di Fuga ****/
 	public function escapeAction() {
 		$user = $this->_userModel->getUserByName($this->_authService->getIdentity()->user);
-		if($user['position'] == NULL)
+		if($user['position'] === NULL)
 			$this->view->assign(array('escape_map' => NULL));
 		else{
 			$res = $this->_userModel->getEscapeByZone($user['position']);

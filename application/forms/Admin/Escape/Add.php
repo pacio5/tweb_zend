@@ -42,7 +42,7 @@ class Application_Form_Admin_Escape_Add extends App_Form_Abstract {
 		$this->addElement ( 'file', 'image', array (
 				'label' => 'Planimetria',
 				'required' => true,
-				'destination' => APPLICATION_PATH . '/../public/images',
+				'destination' => APPLICATION_PATH . '/../public/images/escape',
 				'validators' => array (
 						array ( 'Count', false, 1 ),
 						array ( 'Size', false, 1024000 ),
