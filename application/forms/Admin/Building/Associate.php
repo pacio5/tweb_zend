@@ -17,7 +17,7 @@ class Application_Form_Admin_Building_Associate extends App_Form_Abstract {
 		}
 		
 		$this->addElement ( 'select', 'staff_code', array (
-				'label' => 'Edificio',
+				'label' => 'Staff',
 				'required' => true,
 				'multiOptions' => $select,
 		) );
