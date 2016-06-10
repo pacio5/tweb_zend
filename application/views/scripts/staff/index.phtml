@@ -18,24 +18,53 @@
 						<thead>
 							<tr>
 								<th><i class="fa fa-trash-o"></i></th>
-								<th><i class="fa fa-file-o"></i></th>
+								<th><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></th>
+								<th><i class="fa fa-map"></i></th>
 								<th>Edificio</th>
-								<th>Luogo</th>
+								<th>Piano</th>
+								<th>Zona</th>
 								<th>Tipologia</th>
 								<th>Utente</th>
 								<th>Data & Ora</th>
+								<th>Progresso</th>
 							</tr>
 						</thead>
 						<tbody>
+						<?php foreach($this->alert as $alert): ?>
 							<tr>
-								<td><i class="fa fa-times"></i></td>
-								<td><i class="fa fa-pencil-square-o"></i></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td><a href="<?=$this->url(array(
+								                    'controller' => 'staff',
+													'action' => 'deletealert',
+													'code' => $alert->code
+													),
+													'default', true); ?>"<i class="fa fa-trash-o"></i></td>
+								<?php if($alert->progress !== 'Gestito'):?>
+								<td><a href="<?=$this->url(array(
+								                    'controller' => 'staff',
+													'action' => 'evacuation',
+													'code' => $alert->code,
+													),
+													'default', true); ?>"<i class="fa fa-exclamation-triangle" aria-hidden="true"></i></td>
+								<td><a href="<?=$this->url(array(
+								                    'controller' => 'staff',
+													'action' => 'singleevacuation',
+													'code' => $alert->code,
+													'zone_code' => $alert->zone_code,
+													),
+													'default', true); ?>"<i class="fa fa-map"></i></td>
+								<?php else: ?>
+								<td>    </td>
+								<td>    </td>
+								<?php endif; ?>
+								<td><?= $alert->building;?></td>
+								<td><?= $alert->floor;?></td>
+								<td><?= $alert->zone;?></td>
+								<td><?= $alert->type;?></td>
+								<td><?= $alert->user_code;?></td>
+								<td><?= $alert->date_time;?></td>
+								<td><?= $alert->progress;?></td>
 							</tr>
+						<?php endforeach ?>
 						</tbody>
 					</table>
 				</div>

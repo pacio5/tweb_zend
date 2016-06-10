@@ -14,7 +14,11 @@ class StaffController extends Zend_Controller_Action
 	}
 	
 	public function indexAction(){
-		
+		// Recupera le segnalazioni dal database
+   		$alert = $this->_staffModel->viewAlert();
+   		// Passo alla view gli edifici
+   		$this->view->assign(array(
+   				'alert' => $alert));
 	}
 	
 	public function logoutAction()
@@ -98,6 +102,7 @@ class StaffController extends Zend_Controller_Action
     	$this->_helper->redirector('index');
     }
 	
+	/**** AJAX ****/
 	public function floornumberAction(){
 		$this->_helper->getHelper('layout')->disableLayout();
 		$this->_helper->viewRenderer->setNoRender();
@@ -142,4 +147,63 @@ class StaffController extends Zend_Controller_Action
 		
 		$this->getResponse()->setHeader('Content-type','application/json')->setBody(Zend_Json::encode($res));
 	}
+	
+	/**** Fine AJAX ****/
+	
+	
+	 
+	//***** Segnalazioni *****/
+        
+    public function deletealertAction(){
+    	$code = $this->_getParam('code');
+    	$result = $this->_staffModel->deleteAlert($code);
+    	$this->_helper->redirector('index');
+    }
+	
+	public function evacuationAction(){
+		$code = $this->_getParam('code');
+		$data = array('progress' => 'Gestito');
+    	$this->_staffModel->evacuation($data, (int)$code);
+		$this->_helper->redirector('index');
+	}
+	
+	public function singleevacuationAction(){
+		$this->view->modifyMapForm = $this->getModifyMapForm();
+	}
+	
+	private function getModifyMapForm(){
+    	$urlHelper = $this->_helper->getHelper('url');
+    	$this->_form = new Application_Form_Staff_Associate_Modify();
+    	$this->_form->setAction($urlHelper->url(array(
+    			'controller' => 'staff',
+    			'action' => 'changemap'),
+    			'default'
+    			));
+    	return $this->_form;
+    }
+	
+	public function changemapAction(){
+		$this->view->modifyMapForm = $this->getModifyMapForm();
+    	if(!$this->getRequest()->isPost()){
+    		$this->_helper->redirector('index');
+    	}
+    	
+    	$form = $this->_form;
+    	
+    	if(!$form->isValid($_POST)){
+    		$form->setDescription('Attenzione: dati inseriti errati');
+    		return $this->render('index');
+    	}
+    	
+		$name = $form->getValues();
+		$escape = array('escape_map' => $name['image']);
+    	$progress = array('progress' => 'Gestito');
+		$code = $this->_getParam('code');
+		$zone_code = $this->_getParam('zone_code');
+    	$this->_staffModel->changeMap($escape,(int)$zone_code);
+		$this->_staffModel->evacuation($progress, (int)$code);
+    	$this->_helper->redirector('index');
+	}
+    
+    /**** Fine Segnalazioni ****/
 }

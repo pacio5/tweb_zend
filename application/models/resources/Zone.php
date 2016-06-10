@@ -49,4 +49,9 @@ class Application_Resource_Zone extends Zend_Db_Table_Abstract {
 		$where = "code = $code";
 		$this->update($info, $where);
 	}
+	
+	public function changeMap($info, $code){
+		$where = "code = $code";
+		$this->update($info, $where);
+	}
 }
