@@ -9,15 +9,15 @@
 					<p class="h3"><?= $this->authInfo('name');?> <?= $this->authInfo('surname');?></p>
 					<p class="h5">Username : <?= $this->authInfo('user');?></p>
 				</div>
-				<div class="col-sm-3 dati-utente">
+				<div class="col-sm-2 dati-utente">
 					<p class="h3">Ruolo</p>
 					<p class="h5"><?= strtoupper($this->authInfo('role'));?></p>
 				</div>
-				<div class="col-sm-3 mail">
+				<div class="col-sm-2 mail">
 					<p class="h3">Email</p>
 					<p class="h5"><?= $this->authInfo('mail');?></p>
 				</div>
-				<div class="col-sm-3 password">
+				<div class="col-sm-2 password">
 					<a href="<?= $this->url(array(
 					'controller' => 'user',
 					'action' => 'modifyprofile',
