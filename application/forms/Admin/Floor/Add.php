@@ -34,7 +34,6 @@ class Application_Form_Admin_Floor_Add extends App_Form_Abstract {
 				'label' => 'Numero Zone',
 				'required' => true,
 				'validators' => array('Int'),
-				'decorators' => $this->elementDecorators,
 		) );
 		
 		$this->addElement ( 'file', 'image', array (
