@@ -36,4 +36,9 @@ class Application_Resource_Escape extends Zend_Db_Table_Abstract {
 		$where = "zone_code = $code";
 		$this->delete($where);
 	}
+	
+	public function deleteEscape($info){
+		$where = "code = $info";
+		$this->delete($where);
+	}
 }

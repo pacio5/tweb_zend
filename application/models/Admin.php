@@ -82,6 +82,9 @@ class Application_Model_Admin extends App_Model_Abstract{
 		return $this->getResource('Floor')->getBuildingFloor($info);
 	}
 
+	public function deleteFloorByBuildingCode($info){
+		return $this->getResource('Floor')->deleteFloorByBuildingCode($info);
+	}
 	/**** Fine Piani ****/
 	
 	
@@ -128,6 +131,10 @@ class Application_Model_Admin extends App_Model_Abstract{
 	
 	public function deleteEscapeByZone($code){
 		return $this->getResource('Escape')->deleteEscapeByZone($code);
+	}
+	
+	public function deleteEscape($info){
+		return $this->getResource('Escape')->deleteEscape($info);
 	}
 	/**** Fine Vie di Fuga ****/
 

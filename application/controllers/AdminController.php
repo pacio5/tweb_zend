@@ -104,6 +104,20 @@ class AdminController extends Zend_Controller_Action
     
     public function deletebuildingAction(){
     	$code = $this->_getParam('code');
+    	$floor = $this->_adminModel->getBuildingFloor($code);
+    	
+    	$zone = $this->_adminModel->getFloorZone((int)$floor->code);
+    	
+    	foreach ($zone as $zon) {
+    		$this->_adminModel->deleteEscapeByZone($zon->code);
+    	}
+    	
+    	foreach ($floor as $fl) {
+    		$this->_adminModel->deleteZoneByFloor($fl->code);
+    	}
+    	 
+    	$result = $this->_adminModel->deleteFloorByBuildingCode((int)$code);
+    	
     	$result = $this->_adminModel->deleteBuilding($code);
     	$this->_helper->redirector('viewbuilding');
     }
@@ -438,6 +452,12 @@ class AdminController extends Zend_Controller_Action
     	
     	$data = array('zone_code' => $values['zone_code'] , 'image'=> $values['image']);
     	$this->_adminModel->newEscape($data);
+    	$this->_helper->redirector('viewescape');
+    }
+    
+    public function deleteescapemapAction(){
+    	$param = $this->_getParam('code');
+    	$this->_adminModel->deleteEscape($param);
     	$this->_helper->redirector('viewescape');
     }
     

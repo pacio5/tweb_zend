@@ -22,6 +22,11 @@ class Application_Resource_Floor extends Zend_Db_Table_Abstract {
 		$where = "code = $code";
 		return $this->delete($where);
 	}
+	// Cancella tutti i piani di un edificio
+	public function deleteFloorByBuildingCode($info){
+		$where = "building_code = $info";
+		return $this->delete($where);
+	}
 	// Aggiorna dati piani
 	public function updateFloor($info, $code){
 		$where = "code = $code";
