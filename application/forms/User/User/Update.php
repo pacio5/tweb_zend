@@ -12,7 +12,6 @@ class Application_Form_User_User_Update extends App_Form_Abstract {
 				'filters' => array ('StringTrim'),
 				'required' => true,
 				'validators' => array ( array ('StringLength', true, array ( 1, 30 ) ) ),
-				'decorators' => $this->elementDecorators,
 		) );
 
 		$this->addElement ( 'text', 'name', array (
